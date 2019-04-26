@@ -60,3 +60,17 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+gem 'activeadmin', '~> 2.0'
+
+gem 'cancancan', '~> 3.0', '>= 3.0.1'
+
+gem 'devise', '~> 4.6', '>= 4.6.2'
+
+gem 'bootstrap', '~> 4.3', '>= 4.3.1'
+
+gem 'resque', '~> 2.0'
+
+gem 'highcharts-rails', '~> 6.0', '>= 6.0.3'
+
+gem 'chartjs-ror', '~> 3.6', '>= 3.6.4'
