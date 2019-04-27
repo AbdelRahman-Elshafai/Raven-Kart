@@ -67,10 +67,15 @@ gem 'cancancan', '~> 3.0', '>= 3.0.1'
 
 gem 'devise', '~> 4.6', '>= 4.6.2'
 
-gem 'bootstrap', '~> 4.3', '>= 4.3.1'
 
 gem 'resque', '~> 2.0'
 
 gem 'highcharts-rails', '~> 6.0', '>= 6.0.3'
 
 gem 'chartjs-ror', '~> 3.6', '>= 3.6.4'
+
+gem 'bootstrap', '~> 4.3.1'
+gem 'sassc-rails', '>= 2.1.0'
+gem 'jquery-rails'
+gem 'sprockets', '~> 3.5', '>= 3.5.2'
+gem 'font-awesome-sass', '~> 5.8.1'
