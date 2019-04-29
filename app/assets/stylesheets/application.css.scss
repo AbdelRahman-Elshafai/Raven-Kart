@@ -14,4 +14,12 @@
 @import "plugins";
 @import "bootstrap";
 @import "font-awesome";
+@import 'rails_bootstrap_forms';
 
+.form-control {
+    &:focus {
+      border-color: #ce7852;
+      -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #ce7852;
+      box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #ce7852;
+    }
+  }
