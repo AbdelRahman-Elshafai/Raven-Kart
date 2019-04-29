@@ -22,4 +22,8 @@ class User < ApplicationRecord
       self.role_id = 2
     end
   end
+
+  def store_products
+    self.store.products
+  end
 end
