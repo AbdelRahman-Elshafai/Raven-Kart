@@ -28,6 +28,7 @@
 
 #Ignore local environments
 /config/local_env.yml
+/config/environments/env.yml
 
 #Ignore .idea
 .idea/*
