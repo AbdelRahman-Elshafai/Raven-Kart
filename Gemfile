@@ -77,5 +77,6 @@ gem 'chartjs-ror', '~> 3.6', '>= 3.6.4'
 gem 'bootstrap', '~> 4.3.1'
 gem 'sassc-rails', '>= 2.1.0'
 gem 'jquery-rails'
-gem 'sprockets', '~> 3.5', '>= 3.5.2'
-gem 'font-awesome-sass', '~> 5.8.1'
+
+#Provides Font-Awesome web fonts and stylesheets
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
