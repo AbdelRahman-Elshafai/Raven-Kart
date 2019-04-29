@@ -7,4 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Seeding Roles table
-Role.create([{ kind: 'admin' }, { kind: 'buyer' },{ kind: 'seller' }])User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
+Role.create([{ kind: 'admin' }, { kind: 'buyer' },{ kind: 'seller' }])
+
+
+#Active admin default seed
+User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password' , role: Role.find(1)) if Rails.env.development?
