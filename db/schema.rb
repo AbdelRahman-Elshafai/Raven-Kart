@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_29_075452) do
+ActiveRecord::Schema.define(version: 2019_04_29_145638) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -81,6 +81,14 @@ ActiveRecord::Schema.define(version: 2019_04_29_075452) do
     t.index ["user_id"], name: "index_feedbacks_on_user_id"
   end
 
+  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "name"
+    t.integer "imageable_id"
+    t.string "imageable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "order_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "quantity"
     t.bigint "order_id"
@@ -110,7 +118,6 @@ ActiveRecord::Schema.define(version: 2019_04_29_075452) do
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title"
     t.string "description"
-    t.string "image"
     t.integer "price"
     t.integer "stock"
     t.bigint "store_id"
@@ -154,7 +161,6 @@ ActiveRecord::Schema.define(version: 2019_04_29_075452) do
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.string "email"
-    t.string "avatar"
     t.bigint "role_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
