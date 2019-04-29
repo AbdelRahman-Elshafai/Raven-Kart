@@ -1,3 +1,6 @@
+require 'yaml'
+yaml_data = YAML::load(ERB.new(IO.read(File.join(Rails.root, 'config/environments', 'env.yml'))).result)
+APP_CONFIG = HashWithIndifferentAccess.new(yaml_data)
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -31,7 +34,14 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+
+  # action mailer configs with devise  To enable sending
+  config.action_mailer.perform_deliveries = true
+
+  # action mailer delivery method
+  config.action_mailer.delivery_method = :smtp
+
 
   config.action_mailer.perform_caching = false
 
@@ -44,7 +54,7 @@ Rails.application.configure do
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
 
-  config.action_mailer.default_url_options = {host:'localhost' , port:3000}
+  config.action_mailer.default_url_options = {host: APP_CONFIG[:MAIL_HOST]}
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
@@ -60,4 +70,14 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  config.action_mailer.smtp_settings = {
+      user_name:      APP_CONFIG[:SENDMAIL_USERNAME],
+      password:       APP_CONFIG[:SENDMAIL_PASSWORD],
+      domain:         APP_CONFIG[:MAIL_HOST],
+      address:       'smtp.gmail.com',
+      port:          '587',
+      authentication: :plain,
+      enable_starttls_auto: true
+  }
 end

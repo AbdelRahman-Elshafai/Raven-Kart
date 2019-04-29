@@ -127,6 +127,13 @@
             <%= render "shared/cart" %>
             <!-- End Shopping Cart -->
           </li>
+          <% if current_user%>
+          <li class="nav-item avatar" style="margin-right: 30px">
+            <a class="nav-link p-1" href="#" style="height: 50px; width: 50px; margin-top: 8px;">
+              <%= image_tag current_user.avatar ,:class => "rounded-circle z-depth-0" %>
+            </a>
+          </li>
+          <%end %>
           <%= render "shared/profile_menu" %>
         </ul>
       </div>

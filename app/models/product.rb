@@ -7,7 +7,7 @@ class Product < ApplicationRecord
   has_many :shopping_carts, through: :cart_products
   has_many :order_products
   has_many :orders, through: :order_products
-  has_many :image, :as => :imageable
+  has_many_attached :images
 
   validates :title, :description, 
     length: { minimum: 3 ,maximum: 255}
