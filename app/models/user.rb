@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_one :store
   has_one :shopping_cart
   belongs_to :role
+  has_one :image, :as => :imageable
 
   def self.all_sellers
     where(role_id: 3).pluck(:email , :id)
