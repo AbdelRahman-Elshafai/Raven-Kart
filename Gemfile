@@ -83,3 +83,4 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
 
 #Add bootstrap 4 for forms
 gem 'bootstrap_form', '~> 4.2'
+
