@@ -73,7 +73,7 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.fetch(:product, {}).permit(:title, :description, :price, :stock, :brand_id, :category_id)
+      params.fetch(:product, {}).permit(:title, :description, :price, :stock, :brand_id, :category_id, images:[])
     end
 
     def format(list)
