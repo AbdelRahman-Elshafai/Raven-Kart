@@ -70,6 +70,8 @@ gem 'devise', '~> 4.6', '>= 4.6.2'
 
 gem 'resque', '~> 2.0'
 
+gem 'redis', '~> 4.1'
+
 gem 'highcharts-rails', '~> 6.0', '>= 6.0.3'
 
 gem 'chartjs-ror', '~> 3.6', '>= 3.6.4'
