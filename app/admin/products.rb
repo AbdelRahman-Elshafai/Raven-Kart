@@ -11,7 +11,7 @@ ActiveAdmin.register Product do
 #   permitted << :other if params[:action] == 'create' && current_user.admin?
 #   permitted
 # end
-  permit_params :title , :description , :image , :price , :stock , :store_id , :brand_id ,:category_id
+  permit_params :title , :description , :images , :price , :stock , :store_id , :brand_id ,:category_id
 
 
   form do |f|
@@ -19,7 +19,7 @@ ActiveAdmin.register Product do
     f.inputs do
       f.input :title
       f.input :description
-      f.input :image, :as => :file
+      f.input :images, :as => :file
       f.input :price
       f.input :stock
       f.input :store_id, :as => :select, :collection => Store.pluck(:name , :id)
