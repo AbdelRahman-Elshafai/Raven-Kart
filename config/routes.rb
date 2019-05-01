@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'template/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'template/single'
+  get 'stores' , to: 'stores#index'
+  get 'stores/:id' , to: 'stores#show', as: 'store'
 
   root to: 'template#index'
 end
