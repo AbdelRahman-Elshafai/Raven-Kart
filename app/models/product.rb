@@ -17,7 +17,8 @@ class Product < ApplicationRecord
     presence: true
 
   searchable do
-    text :title, :description
+    text :title
+    text :description
   end
   def product_category
     self.category.name
