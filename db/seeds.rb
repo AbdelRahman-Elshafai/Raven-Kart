@@ -11,5 +11,5 @@
 
 
 #Active admin default seed
-User.create!(email: 'kirakidakun123@gmail.com', password: 'password',
+User.create!(email: 'admin@example.com', password: 'password',
              password_confirmation: 'password' , role_id: 1)
