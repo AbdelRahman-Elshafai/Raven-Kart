@@ -5,10 +5,10 @@ class TemplateController < ApplicationController
   end
 
   def search_products
-    puts "hello"
   end
 
   def new_products
+    render "template/shop-grid"
 
   end
 end
