@@ -16,6 +16,9 @@ class Product < ApplicationRecord
   validates :brand_id, :title, :description, :stock, :price, 
     presence: true
 
+  searchable do
+    text :title, :description
+  end
   def product_category
     self.category.name
   end

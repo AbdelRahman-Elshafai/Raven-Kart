@@ -1,14 +1,24 @@
 <div class="brown--color box-search-content search_active block-bg close__top">
-  <form id="search_mini_form" class="minisearch" action="#">
-    <div class="field__search">
-      <input type="text" placeholder="Search entire store here...">
+<!--  <form id="search_mini_form" class="minisearch" action="#">-->
+<!--    <div class="field__search">-->
+<!--      <input type="text" placeholder="Search entire store here...">-->
+<!--      <div class="action">-->
+<!--        <a><%#= fa_icon('search') %></a>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </form>-->
+  <%= bootstrap_form_with(url: new_products_path ,class: 'minisearch' , id: "search_mini_form" , local:true)  do |f| %>
+    <div class="field__search form-group">
+      <%= f.text_field :search , label_as_placeholder: true  ,label: "Search Entire Store Here... ", wrapper: false%>
       <div class="action">
-        <a href="#"><%= fa_icon('search') %></a>
+        <%= f.submit "Search" %>
       </div>
     </div>
-  </form>
+  <% end %>
   <div class="close__wrap">
     <%= fa_icon('times') %>
     <span>close</span>
   </div>
 </div>
+
+

@@ -17,6 +17,9 @@ Rails.application.routes.draw do
 
   root to: 'template#index'
 
+  get 'search', to: 'template#new_products', as: 'new_products'
+  post 'search', to: 'template#search_products', as: 'search_products'
+
   mount Resque::Server.new, at: "/resque"
 
 end
