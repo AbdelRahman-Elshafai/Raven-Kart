@@ -16,10 +16,15 @@ class User < ApplicationRecord
   end
 
   before_create :default_role, :skip_admin_confirmation
+  after_create :create_user_cart
   def default_role
     if self.role_id == nil
       self.role_id = 2
     end
+  end
+
+  def create_user_cart
+    ShoppingCart.new(:user_id => self.id).save
   end
 
   def store_products

@@ -4,9 +4,10 @@
 <%= bootstrap_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 <%= render "devise/shared/error_messages", resource: resource %>
 
-<%= f.text_field :name%>
+<%= f.text_field :name %>
 <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
 <%= f.file_field :avatar %>
+<%= f.text_field :address %>
 <%= f.password_field :password, autocomplete: "new-password" %>
 <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
 <%= f.submit "Sign up" %>
