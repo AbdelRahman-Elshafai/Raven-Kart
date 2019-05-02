@@ -28,7 +28,9 @@
         <div class="tab__container">
           <div class="shop-grid tab-pane fade show active" id="nav-grid" role="tabpanel">
             <div class="row">
-              <%= render "shared/shopping_grip_product_card" %>
+              <% @products.each do |product| %>
+                <%= render "shared/shopping_grip_product_card" ,  product: product %>
+              <%end %>
             </div>
           </div>
           </div>

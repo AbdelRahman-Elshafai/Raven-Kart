@@ -6,5 +6,6 @@ class TemplateController < ApplicationController
   def shopping
     @categories = Category.all
     @brands = Brand.all
+    @products = Product.all
   end
 end
