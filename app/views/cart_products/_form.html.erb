@@ -1,5 +1,6 @@
-<%= bootstrap_form_with(model: @cart_product, local: true) do |f| %>
+<%= bootstrap_form_with(model: @cart_product, url: add_to_cart_path , local: true) do |f| %>
   <div class="form-row">
+  <%= f.hidden_field :product_id, value: params[:id] %>
   <%= f.number_field :quantity, control_class: 'input-text qty', value: '1', hide_label: true  %>
   <div class="addtocart__actions">
   <%= f.submit 'Add to Cart', class: 'tocart' %>
