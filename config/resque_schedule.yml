@@ -1,0 +1,6 @@
+coupon_schedule:
+  every: 10s
+  class: CouponExpireDateJob
+  args:
+  queue: coupon
+  description: Runs the perform method in Sleeper

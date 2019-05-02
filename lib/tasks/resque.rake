@@ -3,5 +3,8 @@ require 'resque/scheduler/tasks'
 
 
 task "resque:setup" => :environment do
-  ENV['QUEUES'] = 'mailers,default'
+  Resque.schedule = YAML.load_file(
+      "#{Rails.root}/config/resque_schedule.yml"
+  )
+  ENV['QUEUES'] = 'default,mailers,coupon'
 end

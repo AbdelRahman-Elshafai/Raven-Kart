@@ -1,8 +1,6 @@
-class CouponExpireDateJob < ApplicationJob
-  queue_as :coupon
-
-  def perform(*args)
+class CouponExpireDateJob
+  def self.perform
     # Do something later
-    puts "Sleep >>>> #{Time.now}"
+    puts "El Job Ya WALA #{Time.now} "
   end
 end
