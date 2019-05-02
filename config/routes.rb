@@ -1,3 +1,6 @@
+require 'resque/server'
+
+
 Rails.application.routes.draw do
   # devise_for :admin_users, {class_name: 'User'}.merge(ActiveAdmin::Devise.config)
   devise_for :users
@@ -9,6 +12,11 @@ Rails.application.routes.draw do
   get 'template/index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'template/single'
+  get 'stores' , to: 'stores#index'
+  get 'stores/:id' , to: 'stores#show', as: 'store'
 
   root to: 'template#index'
+
+  mount Resque::Server.new, at: "/resque"
+
 end
