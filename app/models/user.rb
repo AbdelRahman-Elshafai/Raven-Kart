@@ -16,7 +16,7 @@ class User < ApplicationRecord
     where(role_id: 3).pluck(:email , :id)
   end
 
-  before_create :default_role
+  before_create :default_role, :skip_admin_confirmation
   def default_role
     if self.role_id == nil
       self.role_id = 2
@@ -31,6 +31,11 @@ class User < ApplicationRecord
     devise_mailer.send(notification, self, *args).deliver_later
   end
 
+  def skip_admin_confirmation
+    if role_id == 1
+      skip_confirmation!
+    end
+  end
 
 
 end
