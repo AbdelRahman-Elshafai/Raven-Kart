@@ -11,6 +11,11 @@ class User < ApplicationRecord
   has_one :role
   has_one_attached :avatar
 
+  validates :name , presence: true , length: { in: 3..20}
+  validates :address , presence: true
+  validates :email , presence: true , format: Devise.email_regexp
+  validates :avatar, attached: true
+
   def self.all_sellers
     where(role_id: 3).pluck(:email , :id)
   end
