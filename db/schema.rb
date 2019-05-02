@@ -200,6 +200,8 @@ ActiveRecord::Schema.define(version: 2019_05_02_100549) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "addresses", "users"
   add_foreign_key "cart_products", "products"
   add_foreign_key "cart_products", "shopping_carts"
   add_foreign_key "feedbacks", "products"
