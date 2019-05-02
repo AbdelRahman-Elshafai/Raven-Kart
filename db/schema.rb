@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_29_190046) do
+ActiveRecord::Schema.define(version: 2019_05_02_100549) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -117,6 +117,8 @@ ActiveRecord::Schema.define(version: 2019_04_29_190046) do
     t.bigint "status_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "price", precision: 10
+    t.decimal "total_price", precision: 10
     t.index ["order_id"], name: "index_order_products_on_order_id"
     t.index ["product_id"], name: "index_order_products_on_product_id"
     t.index ["status_id"], name: "index_order_products_on_status_id"
@@ -198,8 +200,6 @@ ActiveRecord::Schema.define(version: 2019_04_29_190046) do
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "addresses", "users"
   add_foreign_key "cart_products", "products"
   add_foreign_key "cart_products", "shopping_carts"
   add_foreign_key "feedbacks", "products"
