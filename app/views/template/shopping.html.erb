@@ -1,7 +1,7 @@
 <div class="page-shop-sidebar left--sidebar bg--white section-padding--lg">
   <div class="container">
     <div class="row">
-      <%= render "shared/left_side_bar" %>
+      <%= render "shared/left_side_bar" , locals:{categories:  @categories , brands: @brands}%>
       <div class="col-lg-9 col-12 order-1 order-lg-2">
         <div class="row">
           <div class="col-lg-12">
