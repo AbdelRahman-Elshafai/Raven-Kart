@@ -1,6 +1,8 @@
 class CouponExpireDateJob
   def self.perform
     # Do something later
-    puts "El Job Ya WALA #{Time.now} "
+    coupons = Coupon.all
+    coupons.each do |coupon|
+    end
   end
 end

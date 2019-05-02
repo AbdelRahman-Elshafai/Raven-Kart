@@ -12,4 +12,17 @@ ActiveAdmin.register Coupon do
 #   permitted
 # end
 
+  permit_params :name ,:expiration_date ,:usage_limit ,:deduction_type ,:deduction_amount
+
+  form do |f|
+    f.semantic_errors *f.object.errors.keys
+    f.inputs do
+      f.input :name
+      f.input :expiration_date
+      f.input :usage_limit
+      f.input :deduction_type
+      f.input :deduction_amount
+    end
+    f.actions
+  end
 end
