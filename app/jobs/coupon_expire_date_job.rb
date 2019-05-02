@@ -1,6 +1,5 @@
 class CouponExpireDateJob
   def self.perform
-    # puts DateTime.now
     # Do something later
     coupons = Coupon.where(expired: false )
     coupons.each do |coupon|
