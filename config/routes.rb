@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   resources :products
   post 'add_to_cart' , to: 'cart_products#add_to_cart', as: 'add_to_cart'
   get 'template/index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'template/single'
+  get 'template/shopping'
   get 'stores' , to: 'stores#index'
   get 'stores/:id' , to: 'stores#show', as: 'store'
 

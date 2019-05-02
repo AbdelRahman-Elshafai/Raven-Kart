@@ -3,4 +3,6 @@ class TemplateController < ApplicationController
   end
   def single
   end
+  def shopping
+  end
 end
