@@ -1,4 +1,5 @@
 class CartProductsController < ApplicationController
+  before_action :set_cart_product, only: [:remove_from_cart, :destroy]
 
   def add_to_cart
     if !products_in_cart.present? or !get_cart_product
@@ -14,6 +15,16 @@ class CartProductsController < ApplicationController
         update
       end
     end
+  end
+
+  def remove_from_cart
+    if @cart_product.quantity > 1
+      @cart_product.decrement(:quantity)
+      @cart_product.save
+    else
+      destroy
+    end
+    redirect_to shopping_cart_path, notice: 'Product was removed from your cart successfully.'
   end
 
   private
@@ -78,13 +89,7 @@ class CartProductsController < ApplicationController
       end
     end
   
-    # DELETE /cart_products/1
-    # DELETE /cart_products/1.json
     def destroy
       @cart_product.destroy
-      respond_to do |format|
-        format.html { redirect_to cart_products_url, notice: 'Cart product was successfully destroyed.' }
-        format.json { head :no_content }
-      end
     end
 end
