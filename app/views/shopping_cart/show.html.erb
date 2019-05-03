@@ -17,7 +17,7 @@
                             </thead>
                             <tbody>
                                 <% @products.each do |product| %>
-                                <%= render 'tablerow', product: product , products_quantity: @products_quantity %>
+                                <%= render 'tablerow', product: product , products_details: @products_details %>
                                 <%end %>
                             </tbody>
                         </table>
