@@ -7,8 +7,9 @@ class OrderController < ApplicationController
             # @cart_products.each(&:save!).order_products.new
             @cart_products.each do |p|
                 @order.order_products.create(quantity: p.quantity, product_id: p.product_id, price: Product.find_by_id(p.product_id).price)
-                Product.find_by_id(p.id).decrement(:stock).save!
+                Product.find_by_id(p.product_id).decrement(:stock).save!
             end
+            #TODO: empty cart
             redirect_to @order, notice: 'Order was successfully created.'
         else 
             redirect_to shopping_cart_path, alert: 'Order not created.'
