@@ -3,6 +3,10 @@ class Store < ApplicationRecord
   has_many :order_products, through: :products
   belongs_to :user
 
+  def requests
+    self.order_products.all
+  end
+
   def pending_requests
     self.order_products.where(status_id: 1)
   end
