@@ -10,5 +10,6 @@ class StoresController < ApplicationController
   def show
     @store = Store.find(params[:id])
     @products = @store.products
+    @pending_requests = @store.pending_requests
   end
 end
