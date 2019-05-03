@@ -19,6 +19,8 @@ Rails.application.routes.draw do
   get 'template/shopping'
   get 'stores' , to: 'stores#index'
   get 'stores/:id' , to: 'stores#show', as: 'store'
+  post 'orders', to: 'order#create', as: 'orders'
+  get 'order/:id', to: 'order#show', as:'order'
 
   root to: 'template#index'
 
