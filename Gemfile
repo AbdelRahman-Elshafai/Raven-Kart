@@ -70,6 +70,8 @@ gem 'devise', '~> 4.6', '>= 4.6.2'
 
 gem 'resque', '~> 2.0'
 
+gem 'resque-scheduler', '~> 4.0'
+
 gem 'highcharts-rails', '~> 6.0', '>= 6.0.3'
 
 gem 'chartjs-ror', '~> 3.6', '>= 3.6.4'
@@ -83,4 +85,7 @@ gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.5'
 
 #Add bootstrap 4 for forms
 gem 'bootstrap_form', '~> 4.2'
+
+gem 'active_storage_validations'
+
 

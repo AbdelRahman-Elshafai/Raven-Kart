@@ -1,4 +1,5 @@
 require 'resque/server'
+require 'resque/scheduler/server'
 
 
 Rails.application.routes.draw do
@@ -14,8 +15,8 @@ Rails.application.routes.draw do
   get 'remove_from_cart/:id', to: 'cart_products#remove_from_cart', as: 'remove_from_cart'
   get 'empty_cart', to: 'shopping_cart#empty_cart'
   get 'template/index'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   get 'template/single'
+  get 'template/shopping'
   get 'stores' , to: 'stores#index'
   get 'stores/:id' , to: 'stores#show', as: 'store'
 
