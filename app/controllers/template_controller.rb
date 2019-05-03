@@ -5,11 +5,14 @@ class TemplateController < ApplicationController
   end
 
   def search_products
-    @search = Product.solr_search do |searcher|
-      searcher.fulltext search_params[:search]
+    @search = Product.solr_search do
+      fulltext search_params[:search]
     end
-    puts @search.results
-
+    @products = @search.results
+    @total = @search.total
+    @count = @products.count
+    puts @products
+    puts @products.count
     render "template/shop-grid"
   end
 
