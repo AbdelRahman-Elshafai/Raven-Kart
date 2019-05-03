@@ -50,3 +50,9 @@
  </div>
 <br>
 <%= link_to 'Back', stores_path %>
+
+ <% @pending_requests.each do |request| %>
+ <%= request.product.title %>
+ <%= request.quantity%>
+ <br>
+ <% end %>
