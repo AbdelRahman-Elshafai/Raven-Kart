@@ -10,7 +10,10 @@ Rails.application.routes.draw do
     get '/users/sign_out' , :to => 'active_admin/devise/sessions#destroy'
   end
   resources :products
+  get 'shopping_cart', to: 'shopping_cart#show', as: 'shopping_cart'
   post 'add_to_cart' , to: 'cart_products#add_to_cart', as: 'add_to_cart'
+  get 'remove_from_cart/:id', to: 'cart_products#remove_from_cart', as: 'remove_from_cart'
+  get 'empty_cart', to: 'shopping_cart#empty_cart'
   get 'template/index'
   get 'template/single'
   get 'template/shopping'

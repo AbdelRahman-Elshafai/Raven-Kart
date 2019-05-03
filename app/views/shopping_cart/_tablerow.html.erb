@@ -1,0 +1,14 @@
+<tr>
+    <td class="product-thumbnail">
+    <% if product.images.attached? %>
+        <%= link_to product, :class => "first__img" do %>
+            <%= image_tag product.images[0], target: :blank %>
+        <% end %>
+    <% end %>
+    </td>
+    <td class="product-name"><a href="#"><%=product.title%></a></td>
+    <td class="product-price"><span class="amount">$<%=product.price%></span></td>
+    <td class="product-quantity"><span><%= products_details[product.id][:quantity] %></span></td>
+    <td class="product-subtotal">$<%= products_details[product.id][:quantity] * product.price %></td>
+    <td class="product-remove"><%= link_to 'X', remove_from_cart_path(products_details[product.id][:id]) %></td>
+</tr>

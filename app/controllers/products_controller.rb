@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    # TODO: guest or logged in?
     @cart_product = current_user.shopping_cart.cart_products.new
   end
 
