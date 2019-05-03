@@ -32,11 +32,6 @@ class CartProductsController < ApplicationController
       params.require(:cart_product).permit(:quantity)
     end
 
-    def update_quantity
-      params[:cart_product][:quantity] = (get_cart_product.quantity).to_i + params[:cart_product][:quantity].to_i
-      cart_product_update_params
-    end
-
     def create_quantity
       cart_product_params[:quantity].to_i
     end
@@ -76,7 +71,7 @@ class CartProductsController < ApplicationController
     end
   
     def update
-      if get_cart_product.update(update_quantity)
+      if get_cart_product.update(cart_product_update_params)
         redirect_success_on_action
       else
         redirect_error_on_action
