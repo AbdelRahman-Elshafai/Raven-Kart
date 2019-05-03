@@ -49,26 +49,3 @@
  <% end %>
  </div>
 <br>
-
-
-<h1>Requests</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Product name</th>
-      <th>Quantity</th>
-      <th>Status</th>
-    </tr>
-  </thead>
-
-  <tbody>
- <% @pending_requests.each do |request| %>
-      <tr>
-        <td> <%= request.product.title %></td>
-        <td><%= request.quantity%></td>
-        <td><%= request.status.name%></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
