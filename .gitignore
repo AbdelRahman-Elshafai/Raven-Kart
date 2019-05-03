@@ -32,3 +32,4 @@
 
 #Ignore .idea
 .idea/*
+pid.txt
