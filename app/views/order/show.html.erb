@@ -5,30 +5,17 @@
         <li>Total</li>
     </ul>
     <ul class="order_product">
-        <li>Buscipit at magna × 1<span>$48.00</span></li>
-        <li>Buscipit at magna × 1<span>$48.00</span></li>
-        <li>Buscipit at magna × 1<span>$48.00</span></li>
-        <li>Buscipit at magna × 1<span>$48.00</span></li>
+        <% @order_products.each do |order| %>
+        <li><%=order.product.title%> <b>x <%=order.quantity%></b><span><%=order.product.price * order.quantity%></span></li>
+        <%end%>
+
     </ul>
     <ul class="shipping__method">
-        <li>Cart Subtotal <span>$48.00</span></li>
-        <li>Shipping
-            <ul>
-                <li>
-                    <input name="shipping_method[0]" data-index="0" value="legacy_flat_rate"
-                        checked="checked" type="radio">
-                    <label>Flat Rate: $48.00</label>
-                </li>
-                <li>
-                    <input name="shipping_method[0]" data-index="0" value="legacy_flat_rate"
-                        checked="checked" type="radio">
-                    <label>Flat Rate: $48.00</label>
-                </li>
-            </ul>
-        </li>
+        <li>Cart Subtotal <span><%=@total%></span></li>
+        <li>Discount <span></span></li>
     </ul>
     <ul class="total__amount">
-        <li>Order Total <span>$223.00</span></li>
+        <li>Order Total <span></span></li>
     </ul>
 </div>
 <br>

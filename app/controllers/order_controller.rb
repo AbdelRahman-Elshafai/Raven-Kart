@@ -16,6 +16,12 @@ class OrderController < ApplicationController
 
     def show
       @order = Order.find(params[:id])
+      @order_products = @order.order_products
+      @total = 0
+      @order_products.each do |order|
+          @total += order.product.price * order.quantity
+      end
+      @total
     end
 
     private
