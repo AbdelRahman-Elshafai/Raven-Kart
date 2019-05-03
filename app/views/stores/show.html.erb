@@ -49,10 +49,26 @@
  <% end %>
  </div>
 <br>
-<%= link_to 'Back', stores_path %>
 
+
+<h1>Requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Product name</th>
+      <th>Quantity</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
  <% @pending_requests.each do |request| %>
- <%= request.product.title %>
- <%= request.quantity%>
- <br>
- <% end %>
+      <tr>
+        <td> <%= request.product.title %></td>
+        <td><%= request.quantity%></td>
+        <td><%= request.status.name%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
