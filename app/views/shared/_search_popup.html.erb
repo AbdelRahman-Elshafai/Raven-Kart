@@ -1,13 +1,5 @@
 <div class="brown--color box-search-content search_active block-bg close__top">
-<!--  <form id="search_mini_form" class="minisearch" action="#">-->
-<!--    <div class="field__search">-->
-<!--      <input type="text" placeholder="Search entire store here...">-->
-<!--      <div class="action">-->
-<!--        <a><%#= fa_icon('search') %></a>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </form>-->
-  <%= bootstrap_form_with(url: new_products_path ,class: 'minisearch' , id: "search_mini_form")  do |f| %>
+  <%= bootstrap_form_with(url: search_products_path ,class: 'minisearch' , id: "search_mini_form" , method: :get , local: true)  do |f| %>
     <div class="field__search form-group">
       <%= f.text_field :search , label_as_placeholder: true  ,label: "Search Entire Store Here... ", wrapper: false%>
       <div class="action">
@@ -20,5 +12,7 @@
     <span>close</span>
   </div>
 </div>
+
+<!--        <a><%#= fa_icon('search') %></a>-->
 
 
