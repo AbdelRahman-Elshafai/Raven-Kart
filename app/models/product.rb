@@ -21,7 +21,9 @@ class Product < ApplicationRecord
     text :description
     integer :price
 
-    integer :category_id, :references => Brand
+    integer :category_id, references: Category
+    integer :brand_id , references: Brand
+    integer :store_id , references: Store
   end
   def product_category
     self.category.name
