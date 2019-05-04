@@ -13,7 +13,15 @@
     <ul class="shipping__method">
         <li>Cart Subtotal <span><%=@total%></span></li>
         <li>Discount <span></span></li>
-        <li>Order status <span><%=@order.status.name%></span></li>
+        <%if @order.status_id==1%>
+        <li>Order status <span style="color:gray;"><%=@order.status.name%></span></li>
+            <%end%>
+            <%if @order.status_id==2%>
+        <li>Order status <span style="color:orange;"><%=@order.status.name%></span></li>
+            <%end%>
+        <%if @order.status_id==3%>
+            <li>Order status <span style="color:green;"><%=@order.status.name%></span></li>
+        <%end%>
     </ul>
     <ul class="total__amount">
         <li>Order Total <span><%=@order.total_price%></span></li>
