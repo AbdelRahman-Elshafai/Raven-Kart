@@ -21,7 +21,6 @@ class OrderController < ApplicationController
       @order_products.each do |order|
           @total += order.product.price * order.quantity
       end
-      @total
       @order.update(total_price: @total)
     end
 
