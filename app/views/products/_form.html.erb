@@ -1,9 +1,8 @@
-<%# TODO: add placeholder %>
 <%= bootstrap_form_with(model: product, local: true)  do |f| %>
-<%= f.text_field :title %>
-<%= f.text_area :description %>
-<%= f.number_field :price %>
-<%= f.number_field :stock %>
+<%= f.text_field :title, placeholder: 'Title' %>
+<%= f.text_area :description,  placeholder: 'Description .. ' %>
+<%= f.number_field :price,  placeholder: '$price' %>
+<%= f.number_field :stock,  placeholder: 'Stock quantity' %>
 <%= f.select :brand_id, @brands, { 
       label: "Choose a brand:", 
       wrapper: 
@@ -14,7 +13,6 @@
       wrapper: 
         { class: 'has-warning', data: { foo: 'bar' } } 
     }, {} %>
-    <%# TODO: upload min 2 images %>
-<%= f.file_field :images, multiple: true, direct_upload: true, required: true%>
+<%= f.file_field :images, multiple: true, direct_upload: true, value: product.images %>
 <%= f.submit %>
 <% end %>
