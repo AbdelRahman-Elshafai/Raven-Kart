@@ -5,18 +5,22 @@ class TemplateController < ApplicationController
   end
 
   def search_products
-    @search = Product.solr_search do
+    @search = Sunspot.search Product do
       fulltext search_params[:search]
+      with(:category_id , search_params[:category]) if search_params[:category].present?
+      facet(:category_id)
+
     end
     @products = @search.results
     @total = @search.total
     @count = @products.count
-    puts @products
-    puts @products.count
+    puts search_params[:category]
+
+
     render "template/shop-grid"
   end
 
   def search_params
-    params.permit(:search)
+    params.permit(:search, :category)
   end
 end

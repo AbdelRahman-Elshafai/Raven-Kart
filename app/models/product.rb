@@ -19,6 +19,9 @@ class Product < ApplicationRecord
   searchable do
     text :title
     text :description
+    integer :price
+
+    integer :category_id, :references => Brand
   end
   def product_category
     self.category.name
