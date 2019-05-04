@@ -21,8 +21,10 @@ Rails.application.routes.draw do
   get 'stores/:id' , to: 'stores#show', as: 'store'
   post 'orders', to: 'order#create', as: 'orders'
   get 'order/:id', to: 'order#show', as:'order'
-  get 'confirm_status/:id', to: 'stores#confirm_status', as: 'confirm_status'
-  get 'deliver_status/:id', to: 'stores#deliver_status', as: 'deliver_status'
+  get 'confirm_status/:id', to: 'requests#confirm_status', as: 'confirm_status'
+  get 'deliver_status/:id', to: 'requests#deliver_status', as: 'deliver_status'
+  get 'requests/:id', to: 'requests#show', as: 'request'
+
 
 
 
