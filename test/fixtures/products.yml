@@ -3,7 +3,7 @@
 one:
   title: MyString
   description: MyString
-  image: MyString
+#  image: MyString
   price: 1
   stock: 1
   store: one
@@ -13,7 +13,7 @@ one:
 two:
   title: MyString
   description: MyString
-  image: MyString
+#  image: MyString
   price: 1
   stock: 1
   store: two
