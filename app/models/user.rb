@@ -46,5 +46,11 @@ class User < ApplicationRecord
     end
   end
 
+  def seller?
+    if role_id == 3
+      return true
+    end
+    false
+  end
 
 end
