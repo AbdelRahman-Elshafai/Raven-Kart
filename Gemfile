@@ -87,4 +87,6 @@ gem 'bootstrap_form', '~> 4.2'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'progress_bar'
+gem 'jquery-ui-rails'
+
 
