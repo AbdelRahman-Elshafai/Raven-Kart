@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
     if @product.stock > 0
       @availabile = true
     end
-    if user_signed_in?
+    if user_signed_in? and !current_user.seller?
       @cart_product = current_user.shopping_cart.cart_products.new
     end
   end

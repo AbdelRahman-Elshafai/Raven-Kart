@@ -1,30 +1,54 @@
-<div class="col-lg-3 col-12 md-mt-40 sm-mt-40">
   <div class="shop__sidebar">
     <aside class="wedget__categories poroduct--cat">
       <h3 class="wedget__title">Product Categories</h3>
       <ul>
-        <li><a href="#">Biography <span>(3)</span></a></li>
-        <li><a href="#">Business <span>(4)</span></a></li>
-        <li><a href="#">Cookbooks <span>(6)</span></a></li>
-        <li><a href="#">Health & Fitness <span>(7)</span></a></li>
-        <li><a href="#">History <span>(8)</span></a></li>
-        <li><a href="#">Mystery <span>(9)</span></a></li>
-        <li><a href="#">Inspiration <span>(13)</span></a></li>
-        <li><a href="#">Romance <span>(20)</span></a></li>
-        <li><a href="#">Fiction/Fantasy <span>(22)</span></a></li>
-        <li><a href="#">Self-Improvement <span>(13)</span></a></li>
-        <li><a href="#">Humor Books <span>(17)</span></a></li>
-        <li><a href="#">Harry Potter <span>(20)</span></a></li>
-        <li><a href="#">Land of Stories <span>(34)</span></a></li>
-        <li><a href="#">Kids' Music <span>(60)</span></a></li>
-        <li><a href="#">Toys & Games <span>(3)</span></a></li>
-        <li><a href="#">hoodies <span>(3)</span></a></li>
+        <% @search.facet(:category_id).rows.each do |row| %>
+        <li>
+          <% if params[:category].blank? %>
+            <%= link_to row.instance.name, params.to_unsafe_h.merge({ :category => row.value})%>
+          <span>(<%= row.count %></span>)</li>
+            <% else %>
+            <strong><%= row.instance.name %></strong>
+          <%= link_to "x" , search: params[:search] , brand: params[:brand], store: params[:store] ,  min_price: params[:min_price]  , max_price: params[:max_price] , utf8: params[:urf8] , commit: params[:commit] %>
+            <% end %>
+        <% end %>
+      </ul>
+    </aside>
+    <aside class="wedget__categories poroduct--cat">
+      <h3 class="wedget__title">Product Brands</h3>
+      <ul>
+        <% @search.facet(:brand_id).rows.each do |row| %>
+          <li>
+            <% if params[:brand].blank? %>
+              <%= link_to row.instance.name, params.to_unsafe_h.merge({ :brand => row.value})%>
+              <span>(<%= row.count %></span>)</li>
+            <% else %>
+              <strong><%= row.instance.name %></strong>
+              <%= link_to "x" , search: params[:search] , category: params[:category] , store: params[:store] , min_price: params[:min_price]  , max_price: params[:max_price] , utf8: params[:urf8] , commit: params[:commit] %>
+            <% end %>
+        <% end %>
+      </ul>
+    </aside>
+    <aside class="wedget__categories poroduct--cat">
+      <h3 class="wedget__title">Product Sellers</h3>
+      <ul>
+        <% @search.facet(:store_id).rows.each do |row| %>
+          <li>
+            <% if params[:store].blank? %>
+              <%= link_to row.instance.name, params.to_unsafe_h.merge({ :store => row.value})%>
+              <span>(<%= row.count %></span>)</li>
+            <% else %>
+              <strong><%= row.instance.name %></strong>
+              <%= link_to "x" , search: params[:search] , category: params[:category]  , brand: params[:brand] , min_price: params[:min_price]  , max_price: params[:max_price],utf8: params[:urf8] , commit: params[:commit]  %>
+            <% end %>
+        <% end %>
       </ul>
     </aside>
     <aside class="wedget__categories pro--range">
       <h3 class="wedget__title">Filter by price</h3>
       <div class="content-shopby">
         <div class="price_filter s-filter clear">
+          <% if params[:min_price].blank? || params[:max_price].blank? %>
           <form action="#" method="GET">
             <div id="slider-range"></div>
             <div class="slider__range--output">
@@ -33,49 +57,39 @@
                   <span>Price :</span><input type="text" id="amount" readonly="">
                 </div>
                 <div class="price--filter">
-                  <a href="#">Filter</a>
+                  <%= link_to "Filter" , params.to_unsafe_h.merge({}) , id: "filter"%>
                 </div>
               </div>
             </div>
           </form>
+            <% else %>
+            <strong> Remove Price Filter </strong>
+            <%= link_to "x" , search: params[:search] , category: params[:category]  , brand: params[:brand] ,store: params[:store] , utf8: params[:urf8] , commit: params[:commit]  %>
+
+        <% end %>
         </div>
       </div>
     </aside>
-    <aside class="wedget__categories poroduct--compare">
-      <h3 class="wedget__title">Compare</h3>
-      <ul>
-        <li><a href="#">x</a><a href="#">Condimentum posuere</a></li>
-        <li><a href="#">x</a><a href="#">Condimentum posuere</a></li>
-        <li><a href="#">x</a><a href="#">Dignissim venenatis</a></li>
-      </ul>
-    </aside>
-    <aside class="wedget__categories poroduct--tag">
-      <h3 class="wedget__title">Product Tags</h3>
-      <ul>
-        <li><a href="#">Biography</a></li>
-        <li><a href="#">Business</a></li>
-        <li><a href="#">Cookbooks</a></li>
-        <li><a href="#">Health & Fitness</a></li>
-        <li><a href="#">History</a></li>
-        <li><a href="#">Mystery</a></li>
-        <li><a href="#">Inspiration</a></li>
-        <li><a href="#">Religion</a></li>
-        <li><a href="#">Fiction</a></li>
-        <li><a href="#">Fantasy</a></li>
-        <li><a href="#">Music</a></li>
-        <li><a href="#">Toys</a></li>
-        <li><a href="#">Hoodies</a></li>
-      </ul>
-    </aside>
-    <aside class="wedget__categories sidebar--banner">
-      <img src="images/others/banner_left.jpg" alt="banner images">
-      <div class="text">
-        <h2>new products</h2>
-        <h6>save up to <br> <strong>40%</strong>off</h6>
-      </div>
-    </aside>
-  </div>
-</div>
-</div>
-</div>
-</div>
+    </div>
+
+  <script>
+
+      $('#slider-range').slider({
+          range: true,
+          min: 1,
+          max: 1000,
+          values: [300, 500],
+          slide: function(event, ui) {
+              $('#amount').val('$' + ui.values[0] + ' - $' + ui.values[1]);
+          }
+      });
+      $('#amount').val('$' + $('#slider-range').slider('values', 0) +
+          " - $" + $('#slider-range').slider('values', 1));
+
+      $('#filter').on('click', function () {
+          this.href = this.href + "&min_price=" + $('#amount').val().split('-')[0].split("$")[1].trim() + "&max_price=" + $('#amount').val().split('-')[1].split("$")[1].trim();
+
+      })
+
+
+  </script>

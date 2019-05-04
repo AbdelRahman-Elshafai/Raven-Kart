@@ -5,4 +5,5 @@ task :stop do
     command = " kill -9  #{line}"
     system command
   end
+  exec("rake sunspot:solr:stop")
 end

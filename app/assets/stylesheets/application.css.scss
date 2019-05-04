@@ -16,10 +16,15 @@
 @import "font-awesome";
 @import "rails_bootstrap_forms";
 
+
 .form-control {
     &:focus {
       border-color: #ce7852;
       -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #ce7852;
       box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px #ce7852;
     }
+}
+
+.is-sticky.header__area .header__sidebar__right > li.shopping__cart__icon > a {
+  background: transparent url(/assets/icons/cart_white.png) no-repeat scroll left center;
 }
