@@ -142,7 +142,7 @@ ActiveRecord::Schema.define(version: 2019_05_03_192030) do
   end
 
   create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "kind"
+    t.string "kind", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
