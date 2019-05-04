@@ -22,6 +22,7 @@ class OrderController < ApplicationController
           @total += order.product.price * order.quantity
       end
       @total
+      @order.update(total_price: @total)
     end
 
     private
