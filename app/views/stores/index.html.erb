@@ -27,7 +27,9 @@
 <table>
   <thead>
     <tr>
+     <th>Order id</th>
      <th>Product name</th>
+     <th>Store name</th>
       <th>Quantity</th>
       <th>Status</th>
     </tr>
@@ -37,7 +39,9 @@
     <% @stores.each do |store| %>
     <% store.requests.each do |request| %>
       <tr>
+        <td> <%= request.order_id %></td>
         <td> <%= request.product.title %></td>
+        <td> <%= request.product.store.name %></td>
         <td><%= request.quantity%></td>
         <td><%= request.status.name%></td>
         <%if request.status_id==1%>
@@ -51,4 +55,3 @@
     <% end %>
   </tbody>
 </table>
-
