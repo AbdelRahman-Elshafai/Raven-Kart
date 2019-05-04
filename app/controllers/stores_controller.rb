@@ -15,7 +15,23 @@ class StoresController < ApplicationController
 
   def confirm_status
     @stores = OrderProduct.find(params[:id])
+    raise @stores.inspect
     @stores.update(status_id: 2)
+    #FIXME:
+    @orders = OrderProduct.where(order_id: @stores.order_id)
+    @orders.each do |o|
+      @ord = Order.find(o.order_id)
+      if o.status_id == 2
+        @conf = true
+      else
+        @conf = false
+      end
+      @conf
+      if @conf
+        @ord.update(status_id: 2)
+      end
+    end
+
     redirect_to stores_path, notice: 'Order confirmed.'
   end
 
