@@ -10,6 +10,7 @@ class OrderController < ApplicationController
                     #FIXME: decrease by quantity
                     Product.find_by_id(p.product_id).decrement(:stock).save!
                 end
+                @cart_products.each{ |p| p.destroy}
                 redirect_to @order, notice: 'Order was successfully created.'
             else 
                 redirect_to shopping_cart_path, alert: 'Order not created.'
