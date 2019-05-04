@@ -3,6 +3,10 @@ class Store < ApplicationRecord
   has_many :order_products, through: :products
   belongs_to :user
 
+  def orders
+    Order.all
+  end
+
   def requests
     self.order_products.all
   end

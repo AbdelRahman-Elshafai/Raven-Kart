@@ -22,40 +22,38 @@
 
 <br>
 
-<h1>Requests</h1>
+<h1>Orders</h1>
 
 <table>
   <thead>
     <tr>
-     <th>Order id</th>
-     <th>Product name</th>
-     <th>Store name</th>
-      <th>Quantity</th>
-      <th>Status</th>
+      <th>Order id</th>
+      <th>User name</th>
+      <th>Number of order requests</th>
+      <th>Order status</th>
     </tr>
   </thead>
 
   <tbody>
     <% @stores.each do |store| %>
-    <% store.requests.each do |request| %>
+    <% store.orders.each do |order| %>
       <tr>
-        <td> <%= request.order_id %></td>
-        <td> <%= request.product.title %></td>
-        <td> <%= request.product.store.name %></td>
-        <td><%= request.quantity%></td>
-        <%if request.status_id==1%>
-        <td style="color:gray;"><%= request.status.name%></td>
-    <td><%= link_to 'Confirm', confirm_status_path(request.id) %></td>
+        <td><%= order.id %></td>
+        <td><%= order.user.name %></td>
+        <td><%= order.order_products.count %></td>
+        <%if order.status_id==1%>
+        <td style="color:gray;"><%= order.status.name%></td>
     <%end%>
-     <%if request.status_id==2%>
-        <td style="color:orange;"><%= request.status.name%></td>
-    <td><%= link_to 'Deliver', deliver_status_path(request.id) %></td>
+     <%if order.status_id==2%>
+        <td style="color:orange;"><%= order.status.name%></td>
     <%end%>
-    <%if request.status_id==3%>
-        <td style="color:green;"><%= request.status.name%></td>
+    <%if order.status_id==3%>
+        <td style="color:green;"><%= order.status.name%></td>
     <%end%>
+        <td><%= link_to 'Show', request_path(order) %></td>
       </tr>
-      <%end%>
     <% end %>
+    <%end%>
   </tbody>
 </table>
+<br>
