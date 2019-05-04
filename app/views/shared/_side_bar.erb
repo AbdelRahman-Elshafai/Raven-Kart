@@ -9,7 +9,7 @@
           <span>(<%= row.count %></span>)</li>
             <% else %>
             <strong><%= row.instance.name %></strong>
-          <%= link_to "x" , :search => params[:search] , :brand => params[:brand] , :utf8 => params[:utf8] , :commit => [:commit]%>
+          <%= link_to "x" , :search => params[:search] , :brand => params[:brand], :store => params[:store] , :utf8 => params[:urf8] , :commit => params[:commit] %>
             <% end %>
         <% end %>
       </ul>
@@ -24,7 +24,22 @@
               <span>(<%= row.count %></span>)</li>
             <% else %>
               <strong><%= row.instance.name %></strong>
-              <%= link_to "x" , :search => params[:search] , :category => params[:category] , , :utf8 => params[:utf8] , :commit => [:commit] %>
+              <%= link_to "x" , :search => params[:search] , :category => params[:category] , :store => params[:store] , :utf8 => params[:urf8] , :commit => params[:commit] %>
+            <% end %>
+        <% end %>
+      </ul>
+    </aside>
+    <aside class="wedget__categories poroduct--cat">
+      <h3 class="wedget__title">Product Sellers</h3>
+      <ul>
+        <% @search.facet(:store_id).rows.each do |row| %>
+          <li>
+            <% if params[:store].blank? %>
+              <%= link_to row.instance.name, params.to_unsafe_h.merge({ :store => row.value})%>
+              <span>(<%= row.count %></span>)</li>
+            <% else %>
+              <strong><%= row.instance.name %></strong>
+              <%= link_to "x" , :search => params[:search] , :category => params[:category]  , :brand => params[:brand] , :utf8 => params[:urf8] , :commit => params[:commit]  %>
             <% end %>
         <% end %>
       </ul>
