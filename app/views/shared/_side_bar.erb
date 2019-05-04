@@ -9,7 +9,7 @@
           <span>(<%= row.count %></span>)</li>
             <% else %>
             <strong><%= row.instance.name %></strong>
-          <%= link_to "x" , :search => params[:search] , :brand => params[:brand], :store => params[:store] , :utf8 => params[:urf8] , :commit => params[:commit] %>
+          <%= link_to "x" , search: params[:search] , brand: params[:brand], store: params[:store] ,  min_price: params[:min_price]  , max_price: params[:max_price] , utf8: params[:urf8] , commit: params[:commit] %>
             <% end %>
         <% end %>
       </ul>
@@ -24,7 +24,7 @@
               <span>(<%= row.count %></span>)</li>
             <% else %>
               <strong><%= row.instance.name %></strong>
-              <%= link_to "x" , :search => params[:search] , :category => params[:category] , :store => params[:store] , :utf8 => params[:urf8] , :commit => params[:commit] %>
+              <%= link_to "x" , search: params[:search] , category: params[:category] , store: params[:store] , min_price: params[:min_price]  , max_price: params[:max_price] , utf8: params[:urf8] , commit: params[:commit] %>
             <% end %>
         <% end %>
       </ul>
@@ -39,7 +39,7 @@
               <span>(<%= row.count %></span>)</li>
             <% else %>
               <strong><%= row.instance.name %></strong>
-              <%= link_to "x" , :search => params[:search] , :category => params[:category]  , :brand => params[:brand] , :utf8 => params[:urf8] , :commit => params[:commit]  %>
+              <%= link_to "x" , search: params[:search] , category: params[:category]  , brand: params[:brand] , min_price: params[:min_price]  , max_price: params[:max_price],utf8: params[:urf8] , commit: params[:commit]  %>
             <% end %>
         <% end %>
       </ul>
@@ -48,6 +48,7 @@
       <h3 class="wedget__title">Filter by price</h3>
       <div class="content-shopby">
         <div class="price_filter s-filter clear">
+          <% if params[:min_price].blank? || params[:max_price].blank? %>
           <form action="#" method="GET">
             <div id="slider-range"></div>
             <div class="slider__range--output">
@@ -61,6 +62,11 @@
               </div>
             </div>
           </form>
+            <% else %>
+            <strong> Remove Price Filter </strong>
+            <%= link_to "x" , search: params[:search] , category: params[:category]  , brand: params[:brand] ,store: params[:store] , utf8: params[:urf8] , commit: params[:commit]  %>
+
+        <% end %>
         </div>
       </div>
     </aside>
@@ -71,8 +77,8 @@
       $('#slider-range').slider({
           range: true,
           min: 1,
-          max: 10000,
-          values: [3000, 6000],
+          max: 1000,
+          values: [300, 500],
           slide: function(event, ui) {
               $('#amount').val('$' + ui.values[0] + ' - $' + ui.values[1]);
           }

@@ -19,7 +19,7 @@ class Product < ApplicationRecord
   searchable do
     text :title
     text :description
-    integer :price
+    float :price
 
     integer :category_id, references: Category
     integer :brand_id , references: Brand
