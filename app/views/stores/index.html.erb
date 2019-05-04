@@ -43,12 +43,16 @@
         <td> <%= request.product.title %></td>
         <td> <%= request.product.store.name %></td>
         <td><%= request.quantity%></td>
-        <td><%= request.status.name%></td>
         <%if request.status_id==1%>
+        <td style="color:gray;"><%= request.status.name%></td>
     <td><%= link_to 'Confirm', confirm_status_path(request.id) %></td>
     <%end%>
      <%if request.status_id==2%>
-    <td><%= link_to 'Delivered', deliver_status_path(request.id) %></td>
+        <td style="color:orange;"><%= request.status.name%></td>
+    <td><%= link_to 'Deliver', deliver_status_path(request.id) %></td>
+    <%end%>
+    <%if request.status_id==3%>
+        <td style="color:green;"><%= request.status.name%></td>
     <%end%>
       </tr>
       <%end%>

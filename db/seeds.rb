@@ -11,5 +11,8 @@
 
 
 #Active admin default seed
-User.create!(email: 'admin@example.com', password: 'password',
-             password_confirmation: 'password' , role_id: 1)
+# User.create!(email: 'admin@example.com', password: 'password',
+            # password_confirmation: 'password' , role_id: 1)
+
+#Seeding Statues table
+Status.create([{ name: 'Pending' }, { name: 'Confirmed' }, { name: 'Delivered'}])
