@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Seeding Roles table
-# Role.create([{ kind: 'admin' }, { kind: 'buyer' },{ kind: 'seller' }])
+Role.create([{ kind: 'admin' }, { kind: 'buyer' },{ kind: 'seller' }])
 
 
 #Active admin default seed

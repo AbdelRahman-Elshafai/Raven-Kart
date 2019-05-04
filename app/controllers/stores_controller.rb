@@ -8,7 +8,8 @@ class StoresController < ApplicationController
   # GET /stores/1
   # GET /stores/1.json
   def show
-    @store = Store.find(params[:id])
+    # @store = Store.find(params[:id])
+    @store = current_user.store
     @products = @store.products
     @requests = @store.requests
   end
