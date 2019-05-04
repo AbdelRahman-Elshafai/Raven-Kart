@@ -7,8 +7,9 @@ class OrderController < ApplicationController
                 @cart_products = current_user.shopping_cart.cart_products
                 @cart_products.each do |p|
                     @order.order_products.create(quantity: p.quantity, product_id: p.product_id, price: Product.find_by_id(p.product_id).price)
-                    #FIXME: decrease by quantity
-                    Product.find_by_id(p.product_id).decrement(:stock).save!
+                    @product =  Product.find_by_id(p.product_id)
+                    @new_stock = @product.stock - p.quantity
+                    Product.find_by_id(p.product_id).update(stock: @new_stock)
                 end
                 @cart_products.each{ |p| p.destroy}
                 redirect_to @order, notice: 'Order was successfully created.'
