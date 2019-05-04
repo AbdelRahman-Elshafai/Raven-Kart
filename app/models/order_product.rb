@@ -20,10 +20,6 @@ class OrderProduct < ApplicationRecord
     end
   end
 
-  def total_price
-    unit_price * quantity
-  end
-
 private
   def product_present
     if product.nil?
