@@ -39,3 +39,7 @@ solr/test/data
 solr/development/data
 solr/default/data
 solr/pids
+
+
+pid.txt
+

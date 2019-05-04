@@ -11,10 +11,15 @@ class Product < ApplicationRecord
 
   validates :title, :description, 
     length: { minimum: 3 ,maximum: 255}
-  validates :stock, :price, 
+  validates :stock, 
+    numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :price, 
     numericality: { only_integer: true, greater_than: 0 }
   validates :brand_id, :title, :description, :stock, :price, 
     presence: true
+  validates :images,
+  attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
+  limit: { min: 2, max: 6 }
 
   searchable do
     text :title

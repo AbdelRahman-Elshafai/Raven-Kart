@@ -1,0 +1,37 @@
+<div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
+  <div class="product__thumb">
+    <% if product.images[0] %>
+    <a class="first__img" href="single-product.html"><%= image_tag product.images[0] %></a>
+    <a class="second__img animation1" href="single-product.html"><%= image_tag product.images[0] %></a>
+    <div class="hot__box">
+      <span class="hot-label">BEST SALLER</span>
+    </div>
+      <%end %>
+  </div>
+  <div class="product__content content--center">
+    <h4><a href="single-product.html"><%= product.title %></a></h4>
+    <ul class="prize d-flex">
+      <li><%= product.price %> $</li>
+    </ul>
+    <div class="action">
+      <div class="actions_inner">
+        <ul class="add_to_links">
+          <li><a class="cart" href="cart.html"><%=fa_icon('shopping-bag') %></a></li>
+          <li><a class="wishlist" href="wishlist.html"><%= fa_icon('shopping-cart') %></i></a></li>
+          <li><a class="compare" href="#"><%= fa_icon('heartbeat') %></a></li>
+          <li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link"
+                 href="#productmodal"><%= fa_icon('search') %></a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="product__hover--content">
+      <ul class="rating d-flex">
+        <li class="on"><%= fa_icon('star') %></li>
+        <li class="on"><%= fa_icon('star') %></li>
+        <li class="on"><%= fa_icon('star') %></li>
+        <li><%= fa_icon('star') %></li>
+        <li><%= fa_icon('star') %></li>
+      </ul>
+    </div>
+  </div>
+</div>

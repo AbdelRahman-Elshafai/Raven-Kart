@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_29_190046) do
+ActiveRecord::Schema.define(version: 2019_05_03_192030) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -47,17 +47,6 @@ ActiveRecord::Schema.define(version: 2019_04_29_190046) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "building"
-    t.string "street"
-    t.string "district"
-    t.string "city"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_addresses_on_user_id"
-  end
-
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -89,6 +78,7 @@ ActiveRecord::Schema.define(version: 2019_04_29_190046) do
     t.integer "deduction_amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "expired"
   end
 
   create_table "feedbacks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -117,13 +107,13 @@ ActiveRecord::Schema.define(version: 2019_04_29_190046) do
     t.bigint "status_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "price", precision: 10
     t.index ["order_id"], name: "index_order_products_on_order_id"
     t.index ["product_id"], name: "index_order_products_on_product_id"
     t.index ["status_id"], name: "index_order_products_on_status_id"
   end
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "purchased_at"
     t.integer "total_price"
     t.integer "total_price_after_sale"
     t.bigint "user_id"
@@ -165,7 +155,7 @@ ActiveRecord::Schema.define(version: 2019_04_29_190046) do
   end
 
   create_table "statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "type"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -193,13 +183,13 @@ ActiveRecord::Schema.define(version: 2019_04_29_190046) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.string "address"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "addresses", "users"
   add_foreign_key "cart_products", "products"
   add_foreign_key "cart_products", "shopping_carts"
   add_foreign_key "feedbacks", "products"

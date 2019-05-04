@@ -31,15 +31,18 @@
           <p><%= @product.description %></p>
         </div>
         <div class="box-tocart d-flex">
+        <% if @availabile %>
           <span>Qty</span>
-          <input id="qty" class="input-text qty" name="qty" min="1" value="1" title="Qty" type="number">
+          <%= render 'cart_products/form', object: @cart_product %>
+        <% end %>
+          <%# <input id="qty" class="input-text qty" name="qty" min="1" value="1" title="Qty" type="number">
           <div class="addtocart__actions">
             <button class="tocart" type="submit" title="Add to Cart">Add to Cart</button>
-          </div>
-          <div class="product-addto-links clearfix">
+          </div> %>
+          <%# <div class="product-addto-links clearfix">
             <a class="wishlist" href="#"></a>
             <a class="compare" href="#"></a>
-          </div>
+          </div> %>
         </div>
         <div class="product_meta">
           <span class="posted_in">Category:
@@ -49,6 +52,15 @@
         <div class="product_meta">
           <span class="posted_in">Brand:
             <a href="#"><%= @product.product_brand%></a>
+          </span>
+        </div>
+        <div class="product_meta">
+          <span class="posted_in">Availability:
+            <% if @availabile %>
+            <a href="#" style="color:green;">Availabile</a>
+            <% else %>
+            <a href="#" style="color:red;">Out of stock</a>
+            <% end %>
           </span>
         </div>
         <div class="product-share">

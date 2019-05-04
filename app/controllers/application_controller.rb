@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     if current_user.role_id == 1
       admin_root_path
+    elsif current_user.role_id == 3
+      stores_path
     else
       root_path
     end
@@ -14,6 +16,8 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email, :avatar])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [
+        :name, :email, :avatar,:address
+    ])
   end
 end
