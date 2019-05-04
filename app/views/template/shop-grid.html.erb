@@ -1,5 +1,4 @@
 ﻿<% unless @products.nil? %>
-  <% if @count > 0 %>
   <div class="wrapper" id="wrapper">
 
   <!-- Start Shop Page -->
@@ -13,7 +12,8 @@
           <div class="tab__container">
             <div class="shop-grid tab-pane fade show active" id="nav-grid" role="tabpanel">
               <div class="row">
-                <!-- Start Single Product -->
+                <% if @count > 0 %>
+              <!-- Start Single Product -->
                 <% @products.each do |product| %>
                   <div class="product product__style--3 col-lg-4 col-md-4 col-sm-6 col-12">
                     <div class="product__thumb">
@@ -50,7 +50,9 @@
                     </div>
                   </div>
                 <% end %>
-
+                <% else %>
+                  <h1>No Products Found</h1>
+                <% end %>
                 <!-- End Single Product -->
               </div>
             </div>
@@ -61,7 +63,5 @@
   </div>
   <!-- End Shop Page -->
 </div>
-  <% else %>
-    <h1>No Products Found</h1>
-  <% end %>
+
 <% end %>

@@ -21,8 +21,6 @@ class TemplateController < ApplicationController
     @total = @search.total
     @count = @products.count
 
-
-
     render "template/shop-grid"
   end
 
