@@ -17,6 +17,9 @@ class Product < ApplicationRecord
     numericality: { only_integer: true, greater_than: 0 }
   validates :brand_id, :title, :description, :stock, :price, 
     presence: true
+  validates :images,
+  attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
+  limit: { min: 2, max: 6 }
 
   def product_category
     self.category.name
