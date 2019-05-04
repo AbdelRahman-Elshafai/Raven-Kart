@@ -7,13 +7,14 @@ class TemplateController < ApplicationController
   def search_products
     @search = Sunspot.search Product do
       fulltext search_params[:search]
-      with(:category_id , search_params[:category]) if search_params[:category].present?
+      with(:category_id, search_params[:category]) if search_params[:category].present?
       facet(:category_id)
 
     end
     @products = @search.results
     @total = @search.total
     @count = @products.count
+    puts @products
     puts search_params[:category]
 
 

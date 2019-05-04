@@ -3,7 +3,14 @@
       <h3 class="wedget__title">Product Categories</h3>
       <ul>
         <% @search.facet(:category_id).rows.each do |row| %>
-        <li><%= link_to row.instance.name, params.to_unsafe_h.merge({ :category => row.instance.name}) %> </li>
+        <li>
+          <% if params[:category].blank? %>
+            <%= link_to row.instance.name, params.to_unsafe_h.merge({ :category => row.value})%>
+          <span>(<%= row.count %></span>)</li>
+            <% else %>
+            <strong><%= row.instance.name %></strong>
+          <%= link_to "x" , :search => params[:search]%>
+            <% end %>
         <% end %>
 <!--        <li><a href="#">Biography <span>(3)</span></a></li>-->
 <!--        <li><a href="#">Business <span>(4)</span></a></li>-->
