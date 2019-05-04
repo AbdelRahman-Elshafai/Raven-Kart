@@ -7,9 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # Seeding Roles table
-# Role.create([{ kind: 'admin' }, { kind: 'buyer' },{ kind: 'seller' }])
+Role.create([{ kind: 'admin' }, { kind: 'buyer' },{ kind: 'seller' }])
 
 
 #Active admin default seed
-User.create!(email: 'admin@example.com', password: 'password',
-             password_confirmation: 'password' , role_id: 1)
+User.create!(name:'admin',email: 'admin@example.com', password: 'password',
+            password_confirmation: 'password' ,address:'11-admin-admin' , role_id: 1)
+
+#Seeding Statues table
+Status.create([{ name: 'Pending' }, { name: 'Confirmed' }, { name: 'Delivered'}])

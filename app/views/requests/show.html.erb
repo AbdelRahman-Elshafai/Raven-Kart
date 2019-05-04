@@ -1,0 +1,38 @@
+<h1>Requests</h1>
+
+<table>
+    <thead>
+        <tr>
+            <th>Product name</th>
+            <th>Store name</th>
+            <th>Quantity</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @products.each do |request| %>
+        <tr>
+            <td> <%= request.product.title %></td>
+            <td> <%= request.product.store.name %></td>
+            <td><%= request.quantity%></td>
+            <%if request.status_id==1%>
+            <td style="color:gray;"><%= request.status.name%></td>
+            <td><%= link_to 'Confirm', confirm_status_path(request.id) %></td>
+            <%end%>
+            <%if request.status_id==2%>
+            <td style="color:orange;"><%= request.status.name%></td>
+            <td><%= link_to 'Deliver', deliver_status_path(request.id) %></td>
+            <%end%>
+            <%if request.status_id==3%>
+            <td style="color:green;"><%= request.status.name%></td>
+            <%end%>
+        </tr>
+        <%end%>
+    </tbody>
+</table>
+<br>
+<ul class="cart__btn__list d-flex flex-wrap flex-md-nowrap flex-lg-nowrap justify-content-between">
+    <li>
+        <%= link_to 'back',stores_path%>
+    </li>
+</ul>

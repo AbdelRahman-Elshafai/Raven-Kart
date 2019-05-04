@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_02_182325) do
+ActiveRecord::Schema.define(version: 2019_05_03_192030) do
 
   create_table "active_admin_comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "namespace"
@@ -48,15 +48,15 @@ ActiveRecord::Schema.define(version: 2019_05_02_182325) do
   end
 
   create_table "brands", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "cart_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "quantity"
-    t.bigint "product_id"
-    t.bigint "shopping_cart_id"
+    t.integer "quantity", null: false
+    t.bigint "product_id", null: false
+    t.bigint "shopping_cart_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id", "shopping_cart_id"], name: "index_cart_products_on_product_id_and_shopping_cart_id", unique: true
@@ -65,61 +65,51 @@ ActiveRecord::Schema.define(version: 2019_05_02_182325) do
   end
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "coupons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.date "expiration_date"
-    t.integer "usage_limit"
-    t.string "deduction_type"
-    t.integer "deduction_amount"
+    t.string "name", null: false
+    t.date "expiration_date", null: false
+    t.integer "usage_limit", null: false
+    t.string "deduction_type", null: false
+    t.integer "deduction_amount", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "expired"
+    t.boolean "expired", default: false
   end
 
   create_table "feedbacks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "review"
-    t.integer "rating"
-    t.bigint "user_id"
-    t.bigint "product_id"
+    t.integer "rating", null: false
+    t.bigint "user_id", null: false
+    t.bigint "product_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_feedbacks_on_product_id"
     t.index ["user_id"], name: "index_feedbacks_on_user_id"
   end
 
-  create_table "images", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.integer "imageable_id"
-    t.string "imageable_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "order_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "quantity"
-    t.bigint "order_id"
-    t.bigint "product_id"
-    t.bigint "status_id"
+    t.integer "quantity", null: false
+    t.bigint "order_id", null: false
+    t.bigint "product_id", null: false
+    t.bigint "status_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "price", precision: 10
-    t.decimal "total_price", precision: 10
     t.index ["order_id"], name: "index_order_products_on_order_id"
     t.index ["product_id"], name: "index_order_products_on_product_id"
     t.index ["status_id"], name: "index_order_products_on_status_id"
   end
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.datetime "purchased_at"
-    t.integer "total_price"
+    t.integer "total_price", null: false
     t.integer "total_price_after_sale"
-    t.bigint "user_id"
-    t.bigint "status_id"
+    t.bigint "user_id", null: false
+    t.bigint "status_id", null: false
     t.bigint "coupon_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -129,13 +119,13 @@ ActiveRecord::Schema.define(version: 2019_05_02_182325) do
   end
 
   create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "title"
-    t.string "description"
-    t.integer "price"
-    t.integer "stock"
-    t.bigint "store_id"
-    t.bigint "brand_id"
-    t.bigint "category_id"
+    t.string "title", null: false
+    t.string "description", null: false
+    t.integer "price", null: false
+    t.integer "stock", null: false
+    t.bigint "store_id", null: false
+    t.bigint "brand_id", null: false
+    t.bigint "category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["brand_id"], name: "index_products_on_brand_id"
@@ -144,37 +134,37 @@ ActiveRecord::Schema.define(version: 2019_05_02_182325) do
   end
 
   create_table "roles", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "kind"
+    t.string "kind", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "shopping_carts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_shopping_carts_on_user_id"
   end
 
   create_table "statuses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "type"
+    t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "stores", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.text "summary"
-    t.bigint "user_id"
+    t.string "name", null: false
+    t.text "summary", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_stores_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.bigint "role_id"
+    t.string "name", null: false
+    t.string "email", null: false
+    t.bigint "role_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "encrypted_password", default: "", null: false
@@ -185,7 +175,7 @@ ActiveRecord::Schema.define(version: 2019_05_02_182325) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
-    t.string "address"
+    t.string "address", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["role_id"], name: "index_users_on_role_id"

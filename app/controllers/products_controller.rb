@@ -10,8 +10,12 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-    # TODO: guest or logged in?
-    @cart_product = current_user.shopping_cart.cart_products.new
+    if @product.stock > 0
+      @availabile = true
+    end
+    if user_signed_in? and !current_user.seller?
+      @cart_product = current_user.shopping_cart.cart_products.new
+    end
   end
 
   # GET /products/new

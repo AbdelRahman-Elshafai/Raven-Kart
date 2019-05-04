@@ -1,0 +1,30 @@
+<div class="wn__order__box">
+    <h3 class="onder__title">Your order</h3>
+    <ul class="order__total">
+        <li>Product</li>
+        <li>Total</li>
+    </ul>
+    <ul class="order_product">
+        <% @order_products.each do |order| %>
+        <li><%=order.product.title%> <b>x <%=order.quantity%></b><span><%=order.product.price * order.quantity%></span></li>
+        <%end%>
+
+    </ul>
+    <ul class="shipping__method">
+        <li>Cart Subtotal <span><%=@total%></span></li>
+        <li>Discount <span></span></li>
+        <%if @order.status_id==1%>
+        <li>Order status <span style="color:gray;"><%=@order.status.name%></span></li>
+            <%end%>
+            <%if @order.status_id==2%>
+        <li>Order status <span style="color:orange;"><%=@order.status.name%></span></li>
+            <%end%>
+        <%if @order.status_id==3%>
+            <li>Order status <span style="color:green;"><%=@order.status.name%></span></li>
+        <%end%>
+    </ul>
+    <ul class="total__amount">
+        <li>Order Total <span><%=@order.total_price%></span></li>
+    </ul>
+</div>
+<br>
