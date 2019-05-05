@@ -56,10 +56,21 @@ require 'faker'
 # end
 
 #Seeding Store
-10.times do
-  Store.create!(name: Faker::TvShows::GameOfThrones.unique.dragon,
-                summary: Faker::TvShows::GameOfThrones.unique.quote,
-                user_id: Faker::Number.between(12, 22))
+# 10.times do
+#   Store.create!(name: Faker::TvShows::GameOfThrones.unique.dragon,
+#                 summary: Faker::TvShows::GameOfThrones.unique.quote,
+#                 user_id: Faker::Number.between(12, 22))
+# end
+
+#Seeding Product
+50.times do
+  Product.create!(title: Faker::TvShows::GameOfThrones.unique.character,
+                  description: Faker::TvShows::GameOfThrones.unique.quote,
+                  price: Faker::Commerce.price,
+                  stock: Faker::Number.between(5, 20),
+                  store_id: Faker::Number.between(1, 10),
+                  brand_id: Faker::Number.between(1, 10),
+                  category_id: Faker::Number.between(1, 10))
 end
 
 
