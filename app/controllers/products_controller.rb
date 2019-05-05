@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  load_and_authorize_resource
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :create_cart_product_for_user, only: [:index, :show]
 
