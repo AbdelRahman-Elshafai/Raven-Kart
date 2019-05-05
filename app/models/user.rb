@@ -55,9 +55,7 @@ class User < ApplicationRecord
   end
 
   def admin_default_image
-    if role_id == 1
       avatar.attach(io: File.open("public/admin.png") , filename: "admin.png" , content_type: "image/png")
-    end
   end
 
 end

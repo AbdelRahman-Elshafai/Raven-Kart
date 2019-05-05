@@ -21,6 +21,8 @@ class Product < ApplicationRecord
   attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
   limit: { min: 2, max: 6 }
 
+  before_validation :default_product_image
+
   searchable do
     text :title
     text :description
@@ -36,5 +38,13 @@ class Product < ApplicationRecord
 
   def product_brand
     self.brand.name
+  end
+
+  def default_product_image
+    unless images.attached?
+      images.attach(io: File.open("public/product_img_1.jpg") , filename: "public/product_img_1.jpg" , content_type: "image/jpg")
+      images.attach(io: File.open("public/product_img_2.jpg") , filename: "public/product_img_2.jpg" , content_type: "image/jpg")
+
+    end
   end
 end
