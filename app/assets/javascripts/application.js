@@ -16,3 +16,8 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require jquery-ui
+
+function addToCartFormSubmit(formId){
+    $(formId).submit();
+    return false;
+}

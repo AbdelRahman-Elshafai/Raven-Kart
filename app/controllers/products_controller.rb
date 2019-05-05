@@ -5,6 +5,9 @@ class ProductsController < ApplicationController
   # GET /products.json
   def index
     @products = Product.all
+    if user_signed_in? and !current_user.seller?
+      @cart_product = current_user.shopping_cart.cart_products.new
+    end
   end
 
   # GET /products/1
