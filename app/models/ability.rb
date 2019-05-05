@@ -11,7 +11,7 @@ class Ability
       can :manage, [Category, Brand, User , Coupon, Store]
     elsif user.role_id == 3
       store = Store.find_by user_id: user.id
-      can :read , Store do |st|
+      can :manage , Store do |st|
         st.user_id == user.id
       end
       can :read , Product
@@ -20,8 +20,6 @@ class Ability
       end
           #{store_id: store.id }
       # can :crud , Comment :user_id =>user.id
-    else
-      can :read , :all
     end
 
 
