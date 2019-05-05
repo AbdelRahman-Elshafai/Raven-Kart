@@ -99,4 +99,3 @@ gem 'active_storage_validations'
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
 
-gem 'will_paginate', '~> 3.1', '>= 3.1.6'

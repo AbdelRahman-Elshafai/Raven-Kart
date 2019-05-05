@@ -55,10 +55,7 @@
                 <% end %>
                 <!-- End Single Product -->
                 <div class="apple_pagination">
-                  <div class="page_info">
-                    <%= page_entries_info @products %>
-                  </div>
-                  <%= will_paginate @products unless @products.nil? %>
+                  <%= paginate @products unless @products.nil? %>
                 </div>
 
               </div>
