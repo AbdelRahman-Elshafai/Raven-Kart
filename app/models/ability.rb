@@ -7,6 +7,7 @@ class Ability
 
     alias_action :create, :read, :update, :destroy, to: :crud
     alias_action :create, :update, :destroy , to: :cud
+    user ||= User.new # guest user (not logged in)
     if user.role_id == 1
       can :manage, [Category, Brand, User , Coupon, Store]
       can :read, ActiveAdmin::Page
@@ -20,7 +21,10 @@ class Ability
       can :cud , Product do |product|
         product.store_id == store.id
       end
-      # can :crud , Comment :user_id =>user.id
+    elsif user.role_id == 2
+      can :manage, ShoppingCart :user_id => user.id
+    else
+      can :read, :all
     end
 
 

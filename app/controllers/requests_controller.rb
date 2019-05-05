@@ -1,5 +1,6 @@
 class RequestsController < ApplicationController
   authorize_resource :class => false
+  before_action :authenticate_user! , except: :index
   def index
         end
       

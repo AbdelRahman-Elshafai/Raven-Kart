@@ -1,4 +1,5 @@
 class OrderController < ApplicationController
+    before_action :authenticate_user!
     def create
         @cart_products = current_user.shopping_cart.cart_products
         if @cart_products.count > 0        
