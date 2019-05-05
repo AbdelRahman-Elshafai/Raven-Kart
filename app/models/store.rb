@@ -5,6 +5,7 @@ class Store < ApplicationRecord
 
   validates :name , presence: true, uniqueness: true
   validates :summary , presence: true
+  validates :user_id , presence: true, uniqueness: true
 
 
   def orders
