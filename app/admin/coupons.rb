@@ -22,6 +22,7 @@ ActiveAdmin.register Coupon do
       f.input :usage_limit
       f.input :deduction_type
       f.input :deduction_amount
+      f.input :expired
     end
     f.actions
   end
