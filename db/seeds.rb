@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -18,12 +20,39 @@ require 'faker'
 #Seeding Statues table
 # Status.create([{ name: 'Pending' }, { name: 'Confirmed' }, { name: 'Delivered'}])
 
-
+#Seeding Brands Table
 # 10.times do
 #   Brand.create(name: Faker::TvShows::GameOfThrones.unique.house)
 # end
 
-10.times do
-  Category.create(name: Faker::TvShows::GameOfThrones.unique.city)
+#Seeding Category Table
+# 10.times do
+#   Category.create(name: Faker::TvShows::GameOfThrones.unique.city)
+# end
+
+#Seeding Buyers
+# 10.times do
+#   User.create!(name: Faker::Name.first_name, email: Faker::Internet.unique.email ,
+#               password: "password",
+#               password_confirmation: "password",
+#               address: "11-buyer-buyer", role_id: 2)
+# end
+
+#Seeding Sellers
+# 10.times do
+#   User.create!(name: Faker::Name.last_name, email: Faker::Internet.unique.email ,
+#               password: "password",
+#               password_confirmation: "password",
+#               address: "11-seller-seller", role_id: 3)
+# end
+
+#Seeding Coupons
+20.times do
+  Coupon.create!(name: Faker::Commerce.unique.promotion_code,
+                 expiration_date: Faker::Date.forward(10),
+                 usage_limit: Faker::Number.between(1, 200),
+                 deduction_type: %w[Percentage Amount].sample,
+                 deduction_amount: Faker::Number.unique.between(10, 100))
 end
+
 
