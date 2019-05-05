@@ -10,63 +10,63 @@
 require 'faker'
 
 # Seeding Roles table
-# Role.create([{ kind: 'admin' }, { kind: 'buyer' },{ kind: 'seller' }])
+Role.create([{ kind: 'admin' }, { kind: 'buyer' },{ kind: 'seller' }])
 
 
 #Active admin default seed
-# User.create!(name:'admin',email: 'admin@example.com', password: 'password',
-#             password_confirmation: 'password' ,address:'11-admin-admin' , role_id: 1)
+User.create!(name:'admin',email: 'admin@example.com', password: 'password',
+            password_confirmation: 'password' ,address:'11-admin-admin' , role_id: 1)
 
 #Seeding Statues table
-# Status.create([{ name: 'Pending' }, { name: 'Confirmed' }, { name: 'Delivered'}])
+Status.create([{ name: 'Pending' }, { name: 'Confirmed' }, { name: 'Delivered'}])
 
 #Seeding Brands Table
-# 10.times do
-#   Brand.create(name: Faker::TvShows::GameOfThrones.unique.house)
-# end
+10.times do
+  Brand.create(name: Faker::TvShows::GameOfThrones.unique.house)
+end
 
 #Seeding Category Table
-# 10.times do
-#   Category.create(name: Faker::TvShows::GameOfThrones.unique.city)
-# end
+10.times do
+  Category.create(name: Faker::TvShows::GameOfThrones.unique.city)
+end
 
 #Seeding Buyers
-# 10.times do
-#   User.create!(name: Faker::Name.first_name, email: Faker::Internet.unique.email ,
-#               password: "password",
-#               password_confirmation: "password",
-#               address: "11-buyer-buyer", role_id: 2)
-# end
+10.times do
+  User.create!(name: Faker::Name.first_name, email: Faker::Internet.unique.email ,
+              password: "password",
+              password_confirmation: "password",
+              address: "11-buyer-buyer", role_id: 2)
+end
 
 #Seeding Sellers
-# 10.times do
-#   User.create!(name: Faker::Name.last_name, email: Faker::Internet.unique.email ,
-#               password: "password",
-#               password_confirmation: "password",
-#               address: "11-seller-seller", role_id: 3)
-# end
+10.times do
+  User.create!(name: Faker::Name.last_name, email: Faker::Internet.unique.email ,
+              password: "password",
+              password_confirmation: "password",
+              address: "11-seller-seller", role_id: 3)
+end
 
 #Seeding Coupons
-# 20.times do
-#   Coupon.create!(name: Faker::Commerce.unique.promotion_code,
-#                  expiration_date: Faker::Date.forward(10),
-#                  usage_limit: Faker::Number.between(1, 200),
-#                  deduction_type: %w[Percentage Amount].sample,
-#                  deduction_amount: Faker::Number.unique.between(10, 100))
-# end
+20.times do
+  Coupon.create!(name: Faker::Commerce.unique.promotion_code,
+                 expiration_date: Faker::Date.forward(10),
+                 usage_limit: Faker::Number.between(1, 200),
+                 deduction_type: %w[Percentage Amount].sample,
+                 deduction_amount: Faker::Number.unique.between(10, 100))
+end
 
 #Seeding Store
-# 10.times do
-#   Store.create!(name: Faker::TvShows::GameOfThrones.unique.dragon,
-#                 summary: Faker::TvShows::GameOfThrones.unique.quote,
-#                 user_id: Faker::Number.between(12, 22))
-# end
+10.times do
+  Store.create!(name: Faker::TvShows::GameOfThrones.unique.dragon,
+                summary: Faker::TvShows::GameOfThrones.unique.quote,
+                user_id: Faker::Number.between(12, 22))
+end
 
 #Seeding Product
 50.times do
   Product.create!(title: Faker::TvShows::GameOfThrones.unique.character,
-                  description: Faker::TvShows::GameOfThrones.unique.quote,
-                  price: Faker::Commerce.price,
+                  description: Faker::TvShows::GameOfThrones.quote,
+                  price: Faker::Number.between(100, 1000),
                   stock: Faker::Number.between(5, 20),
                   store_id: Faker::Number.between(1, 10),
                   brand_id: Faker::Number.between(1, 10),
