@@ -3,6 +3,10 @@ class Store < ApplicationRecord
   has_many :order_products, through: :products
   belongs_to :user
 
+  validates :name , presence: true, uniqueness: true
+  validates :summary , presence: true
+
+
   def orders
     Order.all
   end
