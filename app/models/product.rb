@@ -21,15 +21,15 @@ class Product < ApplicationRecord
   attached: true, content_type: ['image/png', 'image/jpg', 'image/jpeg'],
   limit: { min: 2, max: 6 }
 
-  # searchable do
-  #   text :title
-  #   text :description
-  #   float :price
-  #
-  #   integer :category_id, references: Category
-  #   integer :brand_id , references: Brand
-  #   integer :store_id , references: Store
-  # end
+  searchable do
+    text :title
+    text :description
+    float :price
+
+    integer :category_id, references: Category
+    integer :brand_id , references: Brand
+    integer :store_id , references: Store
+  end
   def product_category
     self.category.name
   end
