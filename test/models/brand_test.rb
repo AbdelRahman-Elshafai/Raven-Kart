@@ -8,4 +8,9 @@ class BrandTest < ActiveSupport::TestCase
     brand = Brand.new
     assert_not brand.save
   end
+
+  test "should create brand" do
+    brand = Brand.new(name:'opaaa')
+    assert brand.save
+  end
 end
