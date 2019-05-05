@@ -29,6 +29,21 @@ class OrderController < ApplicationController
           @total += order.product.price * order.quantity
       end
       @order.update(total_price: @total)
+      if @order.coupon_id == nil
+        @order.update(total_price_after_sale: 0)
+      else
+        @price_discount = @order.total_price - @order.coupon.deduction_amount
+        @order.update(total_price_after_sale: @price_discount)
+      end
+
+      @coupon = Coupon.order("RAND()").limit(2)    
+    end
+
+    def redeem
+        @order = Order.find(params[:order_id])
+        @order.update(coupon_id: params[:coupon_id])
+        Coupon.find_by_id(params[:coupon_id]).decrement!(:usage_limit)
+        redirect_to order_path(params[:order_id]), notice: "Congrats! you redeemed a coupon"
     end
 
     private
