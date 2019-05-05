@@ -5,13 +5,9 @@ class ProductTest < ActiveSupport::TestCase
   #   assert true
   # end
   test "should create product" do
-    product = Product.create(
-                         title:'title', description:'description', stock:10,
-                         price:10, brand_id:1
-    )
-    product.images.attach(io: File.open('public/apple-touch-icon.png'),
-                          filename: 'apple-touch-icon.png',
-                          content_type: 'application/png')
-    assert product.save
+    @product = products(:product)
+    @product.images.attach(io: File.open("public/apple-touch-icon.png"), filename: "apple-touch-icon.png", content_type: "image/png")
+    @product.images.attach(io: File.open("public/apple-touch-icon.png"), filename: "apple-touch-icon.png", content_type: "image/png")
+    assert @product.save
   end
 end

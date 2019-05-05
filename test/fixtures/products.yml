@@ -1,0 +1,8 @@
+product:
+  title: title
+  description: description
+  stock: 10
+  price: 100
+  brand: dell
+  category: electronics
+  store: bla
