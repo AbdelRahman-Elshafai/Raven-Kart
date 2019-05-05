@@ -33,12 +33,7 @@
 #Ignore .idea
 .idea/*
 
-#ignore solr config data
-solr/data
-solr/test/data
-solr/development/data
-solr/default/data
-solr/pids
+
 
 
 pid.txt

@@ -94,3 +94,7 @@ gem 'jquery-ui-rails'
 
 
 gem 'active_storage_validations'
+
+
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
+
