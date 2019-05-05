@@ -1,13 +1,11 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :create_cart_product_for_user, only: [:index, :show]
 
   # GET /products
   # GET /products.json
   def index
     @products = Product.all
-    if user_signed_in? and !current_user.seller?
-      @cart_product = current_user.shopping_cart.cart_products.new
-    end
   end
 
   # GET /products/1
@@ -15,9 +13,6 @@ class ProductsController < ApplicationController
   def show
     if @product.stock > 0
       @availabile = true
-    end
-    if user_signed_in? and !current_user.seller?
-      @cart_product = current_user.shopping_cart.cart_products.new
     end
   end
 
@@ -97,4 +92,11 @@ class ProductsController < ApplicationController
       @brands = format Brand.all
       @categories = format Category.all
     end
+
+    def create_cart_product_for_user
+      if user_signed_in? and !current_user.seller?
+        @cart_product = current_user.shopping_cart.cart_products.new
+      end
+    end
+
 end
