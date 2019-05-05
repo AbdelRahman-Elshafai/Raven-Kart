@@ -29,6 +29,12 @@
 #Ignore local environments
 /config/local_env.yml
 /config/environments/env.yml
+#Ignore solr config
+solr/data
+solr/test/data
+solr/development/data
+solr/default/data
+solr/pids
 
 #Ignore .idea
 .idea/*
