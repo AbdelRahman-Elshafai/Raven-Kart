@@ -63,7 +63,7 @@ end
 10.times do
   Store.create!(name: Faker::TvShows::GameOfThrones.unique.dragon,
                 summary: Faker::TvShows::GameOfThrones.unique.quote,
-                user_id: Faker::Number.unique.between(12, 22))
+                user_id: Faker::Number.unique.within(12..21))
 end
 
 # Seeding Product

@@ -30,6 +30,7 @@ class Product < ApplicationRecord
     integer :brand_id , references: Brand
     integer :store_id , references: Store
   end
+
   before_validation :default_product_image
 
   def product_category
