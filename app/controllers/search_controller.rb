@@ -9,6 +9,8 @@ class SearchController < ApplicationController
       with(:price ).between(search_params[:min_price]..search_params[:max_price]) if search_params[:min_price].present?
       facet :category_id, :brand_id, :store_id, :price
 
+      paginate page: search_params[:page] , per_page: 12
+
 
     end
     @products = @search.results
@@ -17,6 +19,6 @@ class SearchController < ApplicationController
   end
 
   def search_params
-    params.permit(:search, :category, :brand,:store, :min_price, :max_price)
+    params.permit(:search, :category, :brand,:store, :min_price, :max_price , :page)
   end
 end
