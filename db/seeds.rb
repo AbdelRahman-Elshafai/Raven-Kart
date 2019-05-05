@@ -19,7 +19,11 @@ require 'faker'
 # Status.create([{ name: 'Pending' }, { name: 'Confirmed' }, { name: 'Delivered'}])
 
 
-40.times do
-  Brand.create(name: Faker::TvShows::GameOfThrones.unique.house)
+# 10.times do
+#   Brand.create(name: Faker::TvShows::GameOfThrones.unique.house)
+# end
+
+10.times do
+  Category.create(name: Faker::TvShows::GameOfThrones.unique.city)
 end
 
