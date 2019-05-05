@@ -22,7 +22,9 @@ class Ability
         product.store_id == store.id
       end
     elsif user.role_id == 2
-      can :manage, ShoppingCart :user_id => user.id
+      can :manage, ShoppingCart do |cart|
+        cart.user_id == user.id
+      end
     else
       can :read, :all
     end
