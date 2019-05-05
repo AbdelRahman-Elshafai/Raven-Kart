@@ -12,8 +12,14 @@ require 'faker'
 
 
 #Active admin default seed
-User.create!(name:'admin',email: 'admin@example.com', password: 'password',
-            password_confirmation: 'password' ,address:'11-admin-admin' , role_id: 1)
+# User.create!(name:'admin',email: 'admin@example.com', password: 'password',
+#             password_confirmation: 'password' ,address:'11-admin-admin' , role_id: 1)
 
 #Seeding Statues table
 # Status.create([{ name: 'Pending' }, { name: 'Confirmed' }, { name: 'Delivered'}])
+
+
+40.times do
+  Brand.create(name: Faker::TvShows::GameOfThrones.unique.house)
+end
+
