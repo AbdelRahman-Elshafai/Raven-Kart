@@ -9,6 +9,7 @@ class Ability
     alias_action :create, :update, :destroy , to: :cud
     if user.role_id == 1
       can :manage, [Category, Brand, User , Coupon, Store]
+      can :read, ActiveAdmin::Page
     elsif user.role_id == 3
       store = Store.find_by user_id: user.id
       can :read , Store do |st|
@@ -19,7 +20,6 @@ class Ability
       can :cud , Product do |product|
         product.store_id == store.id
       end
-          #{store_id: store.id }
       # can :crud , Comment :user_id =>user.id
     end
 

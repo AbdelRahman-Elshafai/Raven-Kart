@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
+  protect_from_forgery
 
+  def access_denied(exception)
+    redirect_to root_path, alert: exception.message
+  end
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   rescue_from CanCan::AccessDenied do |exception|
@@ -7,7 +11,6 @@ class ApplicationController < ActionController::Base
       format.html { redirect_to main_app.root_url, notice: exception.message }
     end
   end
-
 
   def after_sign_in_path_for(resource)
     if current_user.role_id == 1
