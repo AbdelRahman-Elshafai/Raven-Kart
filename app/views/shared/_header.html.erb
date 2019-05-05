@@ -126,15 +126,14 @@
             <%= image_tag 'icons/cart.png' %>
             <% end %>
           </li>
-          <%# REVIEW: add dummy avatar? %>
           <% if current_user && current_user.avatar.attached?%>
           <li class="nav-item avatar">
+          <%= render "shared/profile_menu" %>
             <a class="nav-link p-1" href="#" style="height: 50px; width: 50px; margin-top: 8px;">
               <%= image_tag current_user.avatar ,:class => "rounded-circle z-depth-0" %>
             </a>
           </li>
           <%end %>
-          <%= render "shared/profile_menu" %>
         </ul>
       </div>
     </div>
