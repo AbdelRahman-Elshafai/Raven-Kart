@@ -47,12 +47,19 @@ require 'faker'
 # end
 
 #Seeding Coupons
-20.times do
-  Coupon.create!(name: Faker::Commerce.unique.promotion_code,
-                 expiration_date: Faker::Date.forward(10),
-                 usage_limit: Faker::Number.between(1, 200),
-                 deduction_type: %w[Percentage Amount].sample,
-                 deduction_amount: Faker::Number.unique.between(10, 100))
+# 20.times do
+#   Coupon.create!(name: Faker::Commerce.unique.promotion_code,
+#                  expiration_date: Faker::Date.forward(10),
+#                  usage_limit: Faker::Number.between(1, 200),
+#                  deduction_type: %w[Percentage Amount].sample,
+#                  deduction_amount: Faker::Number.unique.between(10, 100))
+# end
+
+#Seeding Store
+10.times do
+  Store.create!(name: Faker::TvShows::GameOfThrones.unique.dragon,
+                summary: Faker::TvShows::GameOfThrones.unique.quote,
+                user_id: Faker::Number.between(12, 22))
 end
 
 
