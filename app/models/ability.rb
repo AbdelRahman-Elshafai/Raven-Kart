@@ -26,7 +26,7 @@ class Ability
         cart.user_id == user.id
       end
     else
-      can :read, :all
+      can :read, [Product,Store,Category,Brand,Coupon]
     end
 
 
