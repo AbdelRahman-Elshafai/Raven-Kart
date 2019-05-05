@@ -1,5 +1,6 @@
 class RequestsController < ApplicationController
-        def index
+  authorize_resource :class => false
+  def index
         end
       
         def show

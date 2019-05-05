@@ -14,6 +14,7 @@ class Ability
       can :read , Store do |st|
         st.user_id == user.id
       end
+      can :manage , :request
       can :read , Product
       can :cud , Product do |product|
         product.store_id == store.id
