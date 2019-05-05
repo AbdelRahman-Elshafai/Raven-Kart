@@ -6,12 +6,3 @@ product:
   brand: dell
   category: electronics
   store: bla
-
-product_without_title:
-  title: asdasd
-  description: description
-  stock: 10
-  price: 100
-  brand: dell
-  category: electronics
-  store: bla
