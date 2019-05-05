@@ -4,6 +4,27 @@ class Ability
   include CanCan::Ability
 
   def initialize(user)
+
+    alias_action :create, :read, :update, :destroy, to: :crud
+    alias_action :create, :update, :destroy , to: :cud
+    if user.role_id == 1
+      can :manage, [Category, Brand, User , Coupon, Store]
+    elsif user.role_id == 3
+      store = Store.find_by user_id: user.id
+      can :read , Store do |st|
+        st.user_id == user.id
+      end
+      can :read , Product
+      can :cud , Product do |product|
+        product.store_id == store.id
+      end
+          #{store_id: store.id }
+      # can :crud , Comment :user_id =>user.id
+    else
+      can :read , :all
+    end
+
+
     # Define abilities for the passed in user here. For example:
     #
     #   user ||= User.new # guest user (not logged in)
