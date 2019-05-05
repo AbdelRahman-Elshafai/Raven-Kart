@@ -12,7 +12,8 @@
         <nav class="mainmenu__nav">
           <ul class="meninmenu d-flex justify-content-start">
             <li class="drop with--one--item"><a href="index.html">Home</a></li>
-            <li class="drop"><a href="#">Shop</a>
+            <li > <%= link_to 'Products', products_path, class:'drop with--one--item' %> </li>
+            <%# <li class="drop"><a href="#">Shop</a>
               <div class="megamenu mega03">
                 <ul class="item item03">
                   <li class="title">Shop Layout</li>
@@ -115,26 +116,27 @@
               </div>
             </li>
             <li><a href="contact.html">Contact</a></li>
-          </ul>
+          </ul> %>
         </nav>
       </div>
       <div class="col-md-6 col-sm-6 col-6 col-lg-2">
         <ul class="header__sidebar__right d-flex justify-content-end align-items-center">
           <li class="shop_search"><a class="search__active" href="#"></a></li>
-          <li class="nav-item shopping__cart__icon" style="margin-right: 10px">
+          <% if current_user && current_user.avatar.attached?%>
+        <li class="nav-item shopping__cart__icon" style="margin-right: 10px">
             <%= link_to shopping_cart_path do %>
             <%= image_tag 'icons/cart.png' %>
             <% end %>
           </li>
-          <%# REVIEW: add dummy avatar? %>
+            <%end %>
+           <li class="nav-item avatar">
+          <%= render "shared/profile_menu" %>
           <% if current_user && current_user.avatar.attached?%>
-          <li class="nav-item avatar">
             <a class="nav-link p-1" href="#" style="height: 50px; width: 50px; margin-top: 8px;">
               <%= image_tag current_user.avatar ,:class => "rounded-circle z-depth-0" %>
             </a>
-          </li>
           <%end %>
-          <%= render "shared/profile_menu" %>
+          </li>
         </ul>
       </div>
     </div>

@@ -1,5 +1,6 @@
 class CartProductsController < ApplicationController
   before_action :set_cart_product, only: [:remove_from_cart, :destroy]
+  before_action :authenticate_user!
 
   def add_to_cart
     if !products_in_cart.present? or !get_cart_product

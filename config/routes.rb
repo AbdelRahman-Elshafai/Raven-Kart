@@ -24,6 +24,8 @@ Rails.application.routes.draw do
   get 'confirm_status/:id', to: 'requests#confirm_status', as: 'confirm_status'
   get 'deliver_status/:id', to: 'requests#deliver_status', as: 'deliver_status'
   get 'requests/:id', to: 'requests#show', as: 'request'
+  get 'redeem/:order_id/:coupon_id', to: 'order#redeem', as: 'redeem'
+
 
 
 

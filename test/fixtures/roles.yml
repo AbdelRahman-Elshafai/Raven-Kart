@@ -1,0 +1,8 @@
+admin:
+  kind: admin
+
+buyer:
+  kind: buyer
+
+seller:
+  kind: seller
