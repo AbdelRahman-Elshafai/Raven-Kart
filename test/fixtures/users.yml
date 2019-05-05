@@ -1,4 +1,6 @@
-#testuser:
-#  name: testuser
-#  email: testuser@test.com
-
+testuser:
+  name: testuser
+  email: testuser@test.com
+  address: testUserAddress
+  encrypted_password: $2a$11$/ohCy/h2.kjvi13QNIoOk.s4Z.L.imP8toHftoVqasdokklhasndkajsldn
+  role_id: 1
