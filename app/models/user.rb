@@ -22,6 +22,7 @@ class User < ApplicationRecord
 
   before_create :default_role, :skip_admin_confirmation
   after_create :create_user_cart
+  before_validation :admin_default_image
   def default_role
     if self.role_id == nil
       self.role_id = 2
@@ -51,6 +52,12 @@ class User < ApplicationRecord
       return true
     end
     false
+  end
+
+  def admin_default_image
+    if role_id == 1
+      avatar.attach(io: File.open("public/admin.png") , filename: "admin.png" , content_type: "image/png")
+    end
   end
 
 end
