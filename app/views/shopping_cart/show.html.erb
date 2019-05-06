@@ -18,6 +18,8 @@
                             <tbody>
                                 <% @products.each do |product| %>
                                 <%= render 'tablerow', product: product , products_details: @products_details %>
+                                <%= render 'cart_products/removeform', id: @products_details[product.id][:id] %>
+
                                 <%end %>
                             </tbody>
                         </table>

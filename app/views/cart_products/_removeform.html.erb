@@ -1,0 +1,10 @@
+<%= bootstrap_form_with(url: remove_from_cart_path , method: :post, local: true) do |f| %>
+<td class="product-quantity">
+  <%= f.hidden_field :id, value: id %>
+    <span><%= f.number_field :quantity, value: '1', hide_label: true  %></span>
+    </td>
+    <td class="product-remove">
+  <%= f.submit 'X' %>
+  </td>
+<% end %>
+</tr>
