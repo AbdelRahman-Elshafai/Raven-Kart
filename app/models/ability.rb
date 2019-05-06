@@ -25,6 +25,7 @@ class Ability
       can :manage, ShoppingCart do |cart|
         cart.user_id == user.id
       end
+      can :read ,Product
     else
       can :read, Product
     end
