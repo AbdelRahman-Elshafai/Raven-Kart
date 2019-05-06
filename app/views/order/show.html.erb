@@ -12,7 +12,11 @@
     </ul>
     <ul class="shipping__method">
         <li>Cart Subtotal <span><%=@total%></span></li>
-        <li>Discount <span></span></li>
+        <%if @order.coupon_id == nil%>
+        <li>Discount <span>-0</span></li>
+        <%else%>
+        <li>Discount <span>-<%=@order.coupon.deduction_amount%></span></li>
+        <%end%>
         <%if @order.status_id==1%>
         <li>Order status <span style="color:gray;"><%=@order.status.name%></span></li>
             <%end%>
@@ -24,7 +28,21 @@
         <%end%>
     </ul>
     <ul class="total__amount">
-        <li>Order Total <span><%=@order.total_price%></span></li>
+    <%if @order.coupon_id == nil%>
+        <li>Order Total <span><%=@order.total_price%></span></li>  
+        <%else%>
+        <li>Order Total <span><%=@order.total_price_after_sale%></span></li>  
+        <%end%>   
+    </ul>
+
+    <%if @order.coupon_id == nil%>
+    <ul class="order_product">
+        <h3>Coupons</h3>
+              <%@coupon.each do |coup|%>
+        <li><%=coup.name%><span>-<%=coup.deduction_amount%> </span></li>
+            <td><span><b><%= link_to 'Redeem', redeem_path(order_id: @order.id,coupon_id:coup.id) %></b></span></td>
+            <%end%>
+   <%end%>
     </ul>
 </div>
 <br>

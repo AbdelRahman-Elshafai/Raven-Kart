@@ -29,6 +29,7 @@
     <tr>
       <th>Order id</th>
       <th>User name</th>
+      <th>Order price</th>
       <th>Number of order requests</th>
       <th>Order status</th>
     </tr>
@@ -40,6 +41,12 @@
       <tr>
         <td><%= order.id %></td>
         <td><%= order.user.name %></td>
+        <%if order.coupon_id == nil%>
+        <td><%=order.total_price %></td>  
+        <%end%>
+         <%if order.coupon_id != nil%>
+        <td><%=order.total_price_after_sale %></td>  
+        <%end%>
         <td><%= order.order_products.count %></td>
         <%if order.status_id==1%>
         <td style="color:gray;"><%= order.status.name%></td>
