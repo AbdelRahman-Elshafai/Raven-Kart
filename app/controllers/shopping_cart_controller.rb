@@ -10,7 +10,8 @@ class ShoppingCartController < ApplicationController
     cart_products = current_user.shopping_cart.cart_products
     cart_products.each{ |p| p.destroy}
     # TODO: redirect to order
-    redirect_to products_path
+    # redirect_to products_path
+    redirect_to order_path(current_user.orders.last())
   end
   
   private

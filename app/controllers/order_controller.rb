@@ -1,5 +1,6 @@
 class OrderController < ApplicationController
     before_action :authenticate_user!
+
     def create
         @cart_products = current_user.shopping_cart.cart_products
         if @cart_products.count > 0        
@@ -12,15 +13,16 @@ class OrderController < ApplicationController
                     @new_stock = @product.stock - p.quantity
                     Product.find_by_id(p.product_id).update(stock: @new_stock)
                 end
-                @cart_products.each{ |p| p.destroy}
-                redirect_to @order, notice: 'Order was successfully created.'
+                # @cart_products.each{ |p| p.destroy}
+                # redirect_to @order, notice: 'Order was successfully created.'
+                redirect_to empty_cart_path
             else 
                 redirect_to shopping_cart_path, alert: 'Order not created.'
             end
         else
             redirect_to shopping_cart_path, alert: 'Cart is empty!.'
         end
-    end
+    end 
 
     def show
       @order = Order.find(params[:id])
@@ -35,10 +37,9 @@ class OrderController < ApplicationController
       else
         @price_discount = @order.total_price - @order.coupon.deduction_amount
         @order.update(total_price_after_sale: @price_discount)
-      end
-
+      end   
       @coupon = Coupon.order("RAND()").limit(2)    
-    end
+    end 
 
     def redeem
         @order = Order.find(params[:order_id])
@@ -49,9 +50,8 @@ class OrderController < ApplicationController
           else
             redirect_to order_path(params[:order_id]), alert: "Order is confirmed you cannot redeem"
           end
-       
-    end
-
+      
+    end 
     private
         def order_params
             params.require(:order).permit()
