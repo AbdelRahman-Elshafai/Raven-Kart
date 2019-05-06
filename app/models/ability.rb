@@ -17,8 +17,8 @@ class Ability
         st.user_id == user.id
       end
       can :manage , :request
-      can :read , Product
-      can :cud , Product do |product|
+      can [:read, :create] , Product
+      can :update , Product do |product|
         product.store_id == store.id
       end
     elsif user.role_id == 2

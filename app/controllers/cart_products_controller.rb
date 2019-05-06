@@ -18,18 +18,14 @@ class CartProductsController < ApplicationController
     end
   end
 
-  def new
-  end
-
   def remove_from_cart
-    if @cart_product.quantity > params[:quantity].to_i
-      @cart_product.decrement(:quantity, params[:quantity].to_i)
-      raise @cart_product.save!.inspect
+    if @cart_product.quantity > 1
+      @cart_product.decrement(:quantity)
+      @cart_product.save
     else
       destroy
     end
-    render :new
-    # redirect_to shopping_cart_path, notice: 'Product was removed from your cart successfully.'
+    redirect_to shopping_cart_path, notice: 'Product was removed from your cart successfully.'
   end
 
   private
