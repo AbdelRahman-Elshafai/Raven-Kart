@@ -1,9 +1,7 @@
 class ShoppingCartController < ApplicationController
-  authorize_resource
+  load_and_authorize_resource
   before_action :map_products_details_in_cart, :products_in_cart, :calculate_products_total, only: [:show]
   before_action :authenticate_user!
-
-
 
   def show
   end
