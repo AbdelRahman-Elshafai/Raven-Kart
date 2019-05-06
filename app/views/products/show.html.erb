@@ -31,7 +31,7 @@
           <p><%= @product.description %></p>
         </div>
         <div class="box-tocart d-flex">
-          <% if (user_signed_in? and !current_user.seller? and @availabile ) or (user_signed_in? and @availabile ) %>
+          <% if  @availabile or !user_signed_in? or !current_user.seller? %> 
           <span>Qty</span>
           <%= render 'cart_products/form', object: @cart_product %>
           <% end %>

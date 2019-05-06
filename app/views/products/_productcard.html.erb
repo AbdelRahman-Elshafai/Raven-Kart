@@ -16,7 +16,7 @@
         <div class="action">
           <div class="actions_inner">
             <%# FIXME: redirect guest => cancancan and hide from seller %>
-            <% if (user_signed_in? and !current_user.seller?) or !user_signed_in? %>
+            <% if !user_signed_in? or !current_user.seller?  %>
             <ul class="add_to_links">
               <li> <%= render 'cart_products/cardform', product: product, object: @cart_product %></li>
               <%# <li><a class="cart" href="#"><%=fa_icon('shopping-bag') </a></li>   
