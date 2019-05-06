@@ -1,0 +1,29 @@
+<%= stylesheet_link_tag '404'%>
+
+<div class="not-found parallax">
+  <div class="sky-bg"></div>
+  <div class="wave-7"></div>
+  <div class="wave-6"></div>
+  <%= link_to root_path , class: "wave-island" do %>
+    <img src="http://res.cloudinary.com/andrewhani/image/upload/v1524501929/404/island.svg" alt="Island">
+<% end %> %>
+  <div class="wave-5"></div>
+  <div class="wave-lost wrp">
+    <span>4</span>
+    <span>0</span>
+    <span>4</span>
+  </div>
+  <div class="wave-4"></div>
+  <div class="wave-boat">
+    <img class="boat" src="http://res.cloudinary.com/andrewhani/image/upload/v1524501894/404/boat.svg" alt="Boat">
+  </div>
+  <div class="wave-3"></div>
+  <div class="wave-2"></div>
+  <div class="wave-1"></div>
+  <div class="wave-message">
+    <p>You Know The Knight King Can Swim Right?</p>
+    <p>Click on the island Quickly before he gets here</p>
+  </div>
+</div>
+
+<%= javascript_include_tag '404.js'%>

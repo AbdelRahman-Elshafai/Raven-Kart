@@ -130,6 +130,10 @@ GEM
     erubi (1.8.0)
     et-orbi (1.2.1)
       tzinfo
+    exception_handler (0.8.0.0)
+      bundler
+      rails (>= 4.2.0)
+      responders
     execjs (2.7.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
@@ -387,6 +391,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise (~> 4.6, >= 4.6.2)
+  exception_handler (~> 0.8.0.0)
   faker!
   font-awesome-rails (~> 4.7, >= 4.7.0.5)
   highcharts-rails (~> 6.0, >= 6.0.3)

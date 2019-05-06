@@ -98,4 +98,8 @@ gem 'active_storage_validations'
 
 gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
+gem 'exception_handler', '~> 0.8.0.0'
+
+
+
 

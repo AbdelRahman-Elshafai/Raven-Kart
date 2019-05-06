@@ -12,7 +12,16 @@ module RavenKart
     config.load_defaults 5.2
 
     config.active_job.queue_adapter = :resque
-    
+
+    config.exception_handler = {
+      dev: true,
+
+      exceptions: {
+          all: { layout: '404' } # -> this will inherit from ApplicationController's layout
+      }
+
+    }
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
