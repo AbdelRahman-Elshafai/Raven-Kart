@@ -5,8 +5,8 @@
         <% @search.facet(:category_id).rows.each do |row| %>
         <li>
           <% if params[:category].blank? %>
-            <%= link_to row.instance.name, params.to_unsafe_h.merge({ :category => row.value})%>
-          <span>(<%= row.count %></span>)</li>
+            <%= link_to row.instance.name, params.permit(:search , :utf8 , :commit, :brand, :store, :min_price, :max_price).merge({ :category => row.value}) %>
+            <span>(<%= row.count %></span>)</li>
             <% else %>
             <strong><%= row.instance.name %></strong>
           <%= link_to "x" , search: params[:search] , brand: params[:brand], store: params[:store] ,  min_price: params[:min_price]  , max_price: params[:max_price] , utf8: params[:urf8] , commit: params[:commit] %>
@@ -20,7 +20,7 @@
         <% @search.facet(:brand_id).rows.each do |row| %>
           <li>
             <% if params[:brand].blank? %>
-              <%= link_to row.instance.name, params.to_unsafe_h.merge({ :brand => row.value})%>
+              <%= link_to row.instance.name, params.permit(:search , :utf8 , :commit,  :category, :store, :min_price, :max_price).merge({ :brand => row.value}) %>
               <span>(<%= row.count %></span>)</li>
             <% else %>
               <strong><%= row.instance.name %></strong>
@@ -35,7 +35,8 @@
         <% @search.facet(:store_id).rows.each do |row| %>
           <li>
             <% if params[:store].blank? %>
-              <%= link_to row.instance.name, params.to_unsafe_h.merge({ :store => row.value})%>
+              <%= link_to row.instance.name, params.permit(:search , :utf8 , :commit, :brand, :category, :min_price, :max_price).merge({ :store => row.value}) %>
+
               <span>(<%= row.count %></span>)</li>
             <% else %>
               <strong><%= row.instance.name %></strong>

@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_one :role
   has_one_attached :avatar
 
+  accepts_nested_attributes_for :store
   validates :name , presence: true , length: { in: 3..20}
   validates :address , presence: true
   validates :email , presence: true , format: Devise.email_regexp
