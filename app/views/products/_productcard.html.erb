@@ -1,42 +1,36 @@
  <div class="product product__style--3" style="width:30%;">
-    <div class="col">
-      <div class="product__thumb">
-        <%= link_to product, :class => "first__img" do %>
-        <%= image_tag product.images[0] %>
-        <% end %>
-        <%= link_to product, :class => "second__img animation" do %>
-        <%= image_tag product.images[1]  %>
-        <% end %>
-      </div>
-      <div class="product__content content--center content--center">
-        <h4><a href="single-product.html"><%= product.title %></a></h4>
-        <ul class="prize d-flex">
-          <li>$<%= product.price%></li>
-        </ul>
-        <div class="action">
-          <div class="actions_inner">
-            <%# FIXME: redirect guest => cancancan and hide from seller %>
-            <% if !user_signed_in? or !current_user.seller?  %>
-            <ul class="add_to_links">
-              <li> <%= render 'cart_products/cardform', product: product, object: @cart_product %></li>
-              <%# <li><a class="cart" href="#"><%=fa_icon('shopping-bag') </a></li>   
-            <%# <li><a class="wishlist" href="#"><%= fa_icon('shopping-cart')</i></a></li>  %>
-              <%# <li><a class="compare" href="#"><%= fa_icon('heartbeat')</a></li>  %>
-              <%# <li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link" %>
-              <%# href="#productmodal"><%= fa_icon('search')</a></li> %>
-            </ul>
-            <% end %>
-          </div>
-        </div>
-        <div class="product__hover--content">
-          <ul class="rating d-flex">
-            <li class="on"><%= fa_icon('star') %></li>
-            <li class="on"><%= fa_icon('star') %></li>
-            <li class="on"><%= fa_icon('star') %></li>
-            <li><%= fa_icon('star') %></li>
-            <li><%= fa_icon('star') %></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
+   <div class="col">
+     <div class="product__thumb">
+       <%= link_to product, :class => "first__img" do %>
+       <%= image_tag product.images[0] %>
+       <% end %>
+       <%= link_to product, :class => "second__img animation" do %>
+       <%= image_tag product.images[1]  %>
+       <% end %>
+     </div>
+     <div class="product__content content--center content--center">
+       <h4><a href="single-product.html"><%= product.title %></a></h4>
+       <ul class="prize d-flex">
+         <li>$<%= product.price%></li>
+       </ul>
+       <div class="action">
+         <div class="actions_inner">
+           <% if !user_signed_in? or !current_user.seller?  %>
+           <ul class="add_to_links">
+             <li> <%= render 'cart_products/cardform', product: product, object: @cart_product %></li>
+           </ul>
+           <% end %>
+         </div>
+       </div>
+       <div class="product__hover--content">
+         <ul class="rating d-flex">
+           <li class="on"><%= fa_icon('star') %></li>
+           <li class="on"><%= fa_icon('star') %></li>
+           <li class="on"><%= fa_icon('star') %></li>
+           <li><%= fa_icon('star') %></li>
+           <li><%= fa_icon('star') %></li>
+         </ul>
+       </div>
+     </div>
+   </div>
+ </div>
