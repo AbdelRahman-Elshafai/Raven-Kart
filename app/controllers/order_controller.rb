@@ -42,9 +42,14 @@ class OrderController < ApplicationController
 
     def redeem
         @order = Order.find(params[:order_id])
-        @order.update(coupon_id: params[:coupon_id])
-        Coupon.find_by_id(params[:coupon_id]).decrement!(:usage_limit)
-        redirect_to order_path(params[:order_id]), notice: "Congrats! you redeemed a coupon"
+        if @order.status_id == 1
+            @order.update(coupon_id: params[:coupon_id])
+            Coupon.find_by_id(params[:coupon_id]).decrement!(:usage_limit)
+            redirect_to order_path(params[:order_id]), notice: "Congrats! you redeemed a coupon"
+          else
+            redirect_to order_path(params[:order_id]), alert: "Order is confirmed you cannot redeem"
+          end
+       
     end
 
     private
