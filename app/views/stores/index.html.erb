@@ -1,5 +1,4 @@
-
-<h1>Stores</h1>
+<% content_for :title, "Dashboard" %>
 
 <table>
   <thead>
@@ -42,10 +41,10 @@
         <td><%= order.id %></td>
         <td><%= order.user.name %></td>
         <%if order.coupon_id == nil%>
-        <td><%=order.total_price %></td>  
+        <td>$<%=order.total_price %></td>  
         <%end%>
          <%if order.coupon_id != nil%>
-        <td><%=order.total_price_after_sale %></td>  
+        <td>$<%=order.total_price_after_sale %></td>  
         <%end%>
         <td><%= order.order_products.count %></td>
         <%if order.status_id==1%>

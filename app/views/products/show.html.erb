@@ -1,4 +1,5 @@
-<br>
+<% content_for :title, "Product Details" %>
+
 <div class="wn__single__product">
   <div class="row">
     <div class="col-lg-6 col-12">
@@ -31,18 +32,10 @@
           <p><%= @product.description %></p>
         </div>
         <div class="box-tocart d-flex">
-          <% if  @availabile or !user_signed_in? or !current_user.seller? %> 
+          <% if  @availabile or !user_signed_in? or !current_user.seller? %>
           <span>Qty</span>
           <%= render 'cart_products/form', object: @cart_product %>
           <% end %>
-          <%# <input id="qty" class="input-text qty" name="qty" min="1" value="1" title="Qty" type="number">
-          <div class="addtocart__actions">
-            <button class="tocart" type="submit" title="Add to Cart">Add to Cart</button>
-          </div> %>
-          <%# <div class="product-addto-links clearfix">
-            <a class="wishlist" href="#"></a>
-            <a class="compare" href="#"></a>
-          </div> %>
         </div>
         <div class="product_meta">
           <span class="posted_in">Category:
