@@ -6,43 +6,49 @@
     </ul>
     <ul class="order_product">
         <% @order_products.each do |order| %>
-        <li><%=order.product.title%> <b>x <%=order.quantity%></b><span><%=order.product.price * order.quantity%></span></li>
+        <li><%=order.product.title%> <b>x <%=order.quantity%></b><span>$<%=order.product.price * order.quantity%></span>
+        </li>
         <%end%>
 
     </ul>
     <ul class="shipping__method">
-        <li>Cart Subtotal <span><%=@total%></span></li>
+        <li>Cart Subtotal <span>$<%=@total%></span></li>
         <%if @order.coupon_id == nil%>
-        <li>Discount <span>-0</span></li>
+        <li>Discount <span>-$0</span></li>
         <%else%>
-        <li>Discount <span>-<%=@order.coupon.deduction_amount%></span></li>
+        <li>Discount <span>-$<%=@order.coupon.deduction_amount%></span></li>
         <%end%>
         <%if @order.status_id==1%>
         <li>Order status <span style="color:gray;"><%=@order.status.name%></span></li>
-            <%end%>
-            <%if @order.status_id==2%>
+        <%end%>
+        <%if @order.status_id==2%>
         <li>Order status <span style="color:orange;"><%=@order.status.name%></span></li>
-            <%end%>
+        <%end%>
         <%if @order.status_id==3%>
-            <li>Order status <span style="color:green;"><%=@order.status.name%></span></li>
+        <li>Order status <span style="color:green;"><%=@order.status.name%></span></li>
         <%end%>
     </ul>
     <ul class="total__amount">
-    <%if @order.coupon_id == nil%>
-        <li>Order Total <span><%=@order.total_price%></span></li>  
+        <%if @order.coupon_id == nil%>
+        <li>Order Total <span>$<%=@order.total_price%></span></li>
         <%else%>
-        <li>Order Total <span><%=@order.total_price_after_sale%></span></li>  
-        <%end%>   
+        <li>Order Total <span>$<%=@order.total_price_after_sale%></span></li>
+        <%end%>
     </ul>
-
+</div>
+<br>
+<div class="wn__order__box">
     <%if @order.coupon_id == nil%>
+    <br>
     <ul class="order_product">
         <h3>Coupons</h3>
-              <%@coupon.each do |coup|%>
-        <li><%=coup.name%><span>-<%=coup.deduction_amount%> </span></li>
-            <td><span><b><%= link_to 'Redeem', redeem_path(order_id: @order.id,coupon_id:coup.id) %></b></span></td>
-            <%end%>
-   <%end%>
+        <hr>
+        <%@coupon.each do |coup|%>
+        <li><%=coup.name%><span>-$<%=coup.deduction_amount%> </span></li>
+        <td><span><b><%= link_to 'Redeem', redeem_path(order_id: @order.id,coupon_id:coup.id) %></b></span></td>
+        <%end%>
     </ul>
+    <%end%>
+    <br>
 </div>
 <br>
