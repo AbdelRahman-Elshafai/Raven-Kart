@@ -1,43 +1,49 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Temptest</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <link rel="shortcut icon" href="favicon.ico">
-    <link rel="apple-touch-icon" href="icon.png">
-    <%= stylesheet_link_tag 'application' ,'plugins', 'style', 'custom', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application'%>
+<head>
+  <title>Temptest</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="icon.png">
+  <%= stylesheet_link_tag 'application' ,'plugins', 'style', 'custom', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application'%>
 
 
 
-    <!-- All css files are included here. -->
+  <!-- All css files are included here. -->
 
-    <!-- Google font (font-family: 'Roboto', sans-serif; Poppins ; Satisfy) -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,600,600i,700,700i,800" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
-    <%= javascript_include_tag 'js/vendor/modernizr-3.5.0.min.js' %>
-  </head>
+  <!-- Google font (font-family: 'Roboto', sans-serif; Poppins ; Satisfy) -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,600,600i,700,700i,800"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <%= javascript_include_tag 'js/vendor/modernizr-3.5.0.min.js' %>
+</head>
 
-  <body>
+<body>
 
-    <div class="wrapper" id="wrapper">
-      <%= render "shared/header" %>
-      <%= render "shared/search_popup" %>
+  <div class="wrapper" id="wrapper">
+    <%= render "shared/header" %>
+    <%= render "shared/search_popup" %>
+      <% if controller_name == "template" && action_name == "index" %>
       <%= render "shared/slider" %>
-      <div class="container">
+      <% else %>
+      <%= render "shared/pagetitle", title: yield(:title) %>
+      <% end %>
+    <div class="container">
       <%= render "shared/alert"%>
       <%= yield %>
-      </div>
-      <%= render "shared/footer" %>
     </div>
-  </body>
-  <%= javascript_include_tag 'js/vendor/jquery-3.2.1.min.js'%>
-  <%= javascript_include_tag 'js/popper.min.js'%>
-  <%= javascript_include_tag 'js/bootstrap.min.js'%>
-  <%= javascript_include_tag 'js/plugins.js'%>
-  <%= javascript_include_tag 'js/active.js'%>
+    <%= render "shared/footer" %>
+  </div>
+</body>
+<%= javascript_include_tag 'js/vendor/jquery-3.2.1.min.js'%>
+<%= javascript_include_tag 'js/popper.min.js'%>
+<%= javascript_include_tag 'js/bootstrap.min.js'%>
+<%= javascript_include_tag 'js/plugins.js'%>
+<%= javascript_include_tag 'js/active.js'%>
 
 </html>
