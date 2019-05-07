@@ -1,0 +1,12 @@
+<% content_for :title, "Categories" %>
+
+<% @categories.each do |category|%>
+    <h2><%= category[0]%></h2>
+    <br>
+    <div class="row">
+    <% category[1].each do |product| %>
+    <%= render 'shared/product_card', product: product%>
+    <% end %>
+    </div>
+    <br>
+<% end %>

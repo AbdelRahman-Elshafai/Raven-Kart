@@ -11,8 +11,28 @@
       <div class="col-lg-8 d-none d-lg-block">
         <nav class="mainmenu__nav">
           <ul class="meninmenu d-flex justify-content-start">
-            <li class="drop with--one--item"><a href="index.html">Home</a></li>
-            <li > <%= link_to 'Products', products_path, class:'drop with--one--item' %> </li>
+            <li class="drop with--one--item"><a href="/">Home</a></li>
+            <% if can? :read, Store%>
+            <li class="drop"><%= link_to 'Store', stores_path %>
+              <div class="megamenu dropdown">
+                <ul class="item item01">
+                <li><%= link_to 'Store', stores_path %></li>
+                  <% if can? :create, Product %>
+                  <li><%= link_to 'Create New Product', new_product_path %></li>
+                  <% end %>
+                </ul>
+              </div>
+            </li>
+              <% end %>
+            <li class="drop"> <%= link_to 'Products', products_path %>
+              <div class="megamenu dropdown">
+                <ul class="item item01">
+                  <li> <%= link_to 'Products', products_path %>
+                  <li><%= link_to 'Products Brands', products_by_brand_path %></li>
+                  <li><%= link_to 'Products Categories', products_by_category_path %></li>
+                </ul>
+              </div>
+            </li>
             <%# <li class="drop"><a href="#">Shop</a>
               <div class="megamenu mega03">
                 <ul class="item item03">
@@ -124,19 +144,19 @@
         <ul class="header__sidebar__right d-flex justify-content-end align-items-center">
           <li class="shop_search"><a class="search__active" href="#"></a></li>
           <% if current_user && !current_user.seller?%>
-        <li class="nav-item shopping__cart__icon" style="margin-right: 10px">
+          <li class="nav-item shopping__cart__icon" style="margin-right: 10px">
             <%= link_to shopping_cart_path do %>
             <%= image_tag 'icons/cart.png' %>
             <% end %>
           </li>
-            <%end %>
-           <li class="nav-item avatar">
-          <%= render "shared/profile_menu" %>
-          <% if current_user && current_user.avatar.attached?%>
+          <%end %>
+          <li class="nav-item avatar">
+            <%= render "shared/profile_menu" %>
+            <% if current_user && current_user.avatar.attached?%>
             <a class="nav-link p-1" href="#" style="height: 50px; width: 50px; margin-top: 8px;">
               <%= image_tag current_user.avatar ,:class => "rounded-circle z-depth-0" %>
             </a>
-          <%end %>
+            <%end %>
           </li>
         </ul>
       </div>

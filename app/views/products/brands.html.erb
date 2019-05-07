@@ -1,0 +1,12 @@
+<% content_for :title, "Brands" %>
+
+<% @brands.each do |brand|%>
+    <h2><%= brand[0]%></h2>
+    <br>
+    <div class="row">
+    <% brand[1].each do |product| %>
+    <%= render 'shared/product_card', product: product%>
+    <% end %>
+    </div>
+    <br>
+<% end %>
