@@ -81,17 +81,6 @@ ActiveRecord::Schema.define(version: 2019_05_05_090407) do
     t.boolean "expired", default: false
   end
 
-  create_table "feedbacks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.text "review"
-    t.integer "rating", null: false
-    t.bigint "user_id", null: false
-    t.bigint "product_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_feedbacks_on_product_id"
-    t.index ["user_id"], name: "index_feedbacks_on_user_id"
-  end
-
   create_table "order_products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "quantity", null: false
     t.bigint "order_id", null: false
@@ -184,8 +173,6 @@ ActiveRecord::Schema.define(version: 2019_05_05_090407) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "cart_products", "products"
   add_foreign_key "cart_products", "shopping_carts"
-  add_foreign_key "feedbacks", "products"
-  add_foreign_key "feedbacks", "users"
   add_foreign_key "order_products", "orders"
   add_foreign_key "order_products", "products"
   add_foreign_key "order_products", "statuses"
