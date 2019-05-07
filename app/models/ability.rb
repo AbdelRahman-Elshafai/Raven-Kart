@@ -35,7 +35,7 @@ class Ability
         :filter_products_by_category, 
         :filter_products_by_brand ] ,Product
       can :read, Order do |order|
-        order.user_id == user_id
+        order.user_id == user.id
       end
       can :create, Order
     else
