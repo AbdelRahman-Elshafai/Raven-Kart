@@ -93,7 +93,7 @@ While the **server is running**, you can now seed your database.
 ```rails
 rails db:seed
 ``` 
-then stop the server and run it again.
+then stop the server and run it again to reindex **Sunspot Search Engine**.
 
 With that, you can register or use any of the seeded accounts.
 
@@ -102,5 +102,11 @@ You now have an admin account which you can log in by
 email: admin@example.com
 password: password
 ```
+### Docker image
+Inside `config/dockercommands` you will find all the commands you need to run the docker image.
+
+## Database Design
+[ERD](Simple-ecommerce.jpeg)
+[Schema](Schema.pdf)
 
 
