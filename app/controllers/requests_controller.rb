@@ -26,7 +26,7 @@ class RequestsController < ApplicationController
             order.update(status_id: 2)
           end
       
-          redirect_to request_path(order) , notice: 'Order confirmed.'
+          redirect_to request_path(order) , notice: 'Product confirmed.'
         end
       
         def deliver_status
@@ -46,6 +46,6 @@ class RequestsController < ApplicationController
             order.update(status_id: 3)
           end
       
-          redirect_to request_path(order), notice: 'Order delivered.'
+          redirect_to request_path(order), notice: 'Product delivered.'
         end
       end
