@@ -38,6 +38,7 @@
     </ul>
 </div>
 <br>
+<% if @order.status_id == 1%>
 <div class="wn__order__box">
     <%if @order.coupon_id == nil%>
     <br>
@@ -53,3 +54,4 @@
     <br>
 </div>
 <br>
+<%end %>
