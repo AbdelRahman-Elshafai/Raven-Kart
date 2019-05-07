@@ -37,7 +37,7 @@ class Ability
       can :read, Order do |order|
         order.user_id == user.id
       end
-      can :create, Order
+      can [:create, :redeem], Order
     else
       can [:read, :show_products_by_brand, 
         :show_products_by_category, 
