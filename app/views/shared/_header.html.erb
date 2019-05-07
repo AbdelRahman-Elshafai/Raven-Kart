@@ -20,10 +20,10 @@
                   <% if can? :create, Product %>
                   <li><%= link_to 'Create New Product', new_product_path %></li>
                   <% end %>
-                  <% end %>
                 </ul>
               </div>
             </li>
+              <% end %>
             <li class="drop"> <%= link_to 'Products', products_path %>
               <div class="megamenu dropdown">
                 <ul class="item item01">
