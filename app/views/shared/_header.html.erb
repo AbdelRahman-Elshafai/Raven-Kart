@@ -11,8 +11,19 @@
       <div class="col-lg-8 d-none d-lg-block">
         <nav class="mainmenu__nav">
           <ul class="meninmenu d-flex justify-content-start">
-            <li class="drop with--one--item"><a href="index.html">Home</a></li>
-            <li > <%= link_to 'Products', products_path, class:'drop with--one--item' %> </li>
+            <li class="drop with--one--item"><a href="/">Home</a></li>
+            <% if can? :read, Store%>
+            <li class="drop with--one--item"><%= link_to 'Store', stores_path %></li>
+            <% end %>
+            <li class="drop"> <%= link_to 'Products', products_path %> 
+              <div class="megamenu dropdown">
+                <ul class="item item01">
+                  <li> <%= link_to 'Products', products_path %>
+                  <li><%= link_to 'Products Brands', products_by_brand_path %></li>
+                  <li><%= link_to 'Products Categories', products_by_category_path %></li>
+                </ul>
+              </div>
+              </li>
             <%# <li class="drop"><a href="#">Shop</a>
               <div class="megamenu mega03">
                 <ul class="item item03">

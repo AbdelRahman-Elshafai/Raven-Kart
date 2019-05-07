@@ -17,7 +17,7 @@ class Ability
         st.user_id == user.id
       end
       can :manage , :request
-      can [:read, :create] , Product
+      can [:read, :create, :show_products_by_brand, :show_products_by_category ] , Product
       can :update , Product do |product|
         product.store_id == store.id
       end
@@ -26,9 +26,9 @@ class Ability
         cart.user_id == user.id
       end
       can [:add_to_cart, :remove_from_cart], CartProduct
-      can :read ,Product
+      can [:read, :show_products_by_brand, :show_products_by_category ] ,Product
     else
-      can :read, Product
+      can [:read, :show_products_by_brand, :show_products_by_category ], Product
     end
 
 

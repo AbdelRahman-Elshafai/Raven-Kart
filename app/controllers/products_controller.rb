@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   load_and_authorize_resource
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :create_cart_product_for_user, only: [:index, :show]
-
+  before_action :get_all_products, only: [:show_products_by_brand, :show_products_by_category]
 
 
   # GET /products
@@ -73,6 +73,16 @@ class ProductsController < ApplicationController
     end
   end
 
+  def show_products_by_brand
+    @brands =  @products.group_by{|product| product.brand.name}
+    render 'brands'
+  end
+
+  def show_products_by_category
+    @categories =  @products.group_by{|product| product.category.name}
+    render 'categories'
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product
@@ -101,6 +111,10 @@ class ProductsController < ApplicationController
       if user_signed_in? and !current_user.seller?
         @cart_product = current_user.shopping_cart.cart_products.new
       end
+    end
+
+    def get_all_products
+      @products = Product.all
     end
 
 end
