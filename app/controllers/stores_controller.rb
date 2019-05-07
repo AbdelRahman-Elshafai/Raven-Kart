@@ -4,7 +4,7 @@ class StoresController < ApplicationController
   # GET /stores
   # GET /stores.json
   def index
-    @stores = Store.where(user_id: current_user.id)
+    @store = Store.find_by_user_id(current_user.id)
   end
 
   # GET /stores/1
