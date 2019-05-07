@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get 'template/shopping'
   get 'stores' , to: 'stores#index', as:'stores'
   get 'stores/:id' , to: 'stores#show', as: 'store'
+  get 'orders', to: 'order#index', as: 'past_orders'
   post 'orders', to: 'order#create', as: 'orders'
   get 'order/:id', to: 'order#show', as:'order'
   get 'confirm_status/:id', to: 'requests#confirm_status', as: 'confirm_status'

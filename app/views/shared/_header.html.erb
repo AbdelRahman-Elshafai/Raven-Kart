@@ -33,6 +33,9 @@
                 </ul>
               </div>
             </li>
+            <% if can? :read, Order%>
+            <li class="drop with--one--item"><%= link_to 'Order', past_orders_path %></li>
+            <% end %>
             <%# <li class="drop"><a href="#">Shop</a>
               <div class="megamenu mega03">
                 <ul class="item item03">

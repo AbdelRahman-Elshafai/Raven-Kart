@@ -1,5 +1,10 @@
 class OrderController < ApplicationController
     before_action :authenticate_user!
+    load_and_authorize_resource
+
+    def index
+        @orders = current_user.orders
+    end
 
     def create
         @cart_products = current_user.shopping_cart.cart_products
