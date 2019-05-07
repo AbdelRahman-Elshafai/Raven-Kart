@@ -1,0 +1,28 @@
+-change database.yml 
+    	default: &default
+  	adapter: mysql2
+  	encoding: utf8
+  	pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  	username: <%= ENV['DATABASE_USER'] %>
+  	password: <%= ENV['DATABASE_PASSWORD'] %>
+  	host: <%= ENV['DATABASE_HOST'] %>
+development:
+  	<<: *default
+  	database: <%= ENV['RAVEN_KART_DATABASE_DEVELOPMENT'] %> 
+
+---------------------------------------------------------------------
+- put Dockerfile and docker-compose.yml at app root level
+-from Dockerfile and docker-compose.yml 
+    1-docker-compose up to download mysql/redis/solr/ruby images
+    2-docker-compose ps -> to show docker-compose containers
+    3-docker-compose down -> to close all containers
+    4-docker images -> to show your images
+    5-docker rmi <image_ID> -> to delete image
+    6-docker-compose run <container-tag-from-docker-compose.yml> sh -> to run terminal in side
+---------------------------------------------------------------------
+
+
+
+
+remember local.env
+remember env.yml

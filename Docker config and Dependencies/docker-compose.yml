@@ -1,0 +1,72 @@
+version: '3.3'
+
+services:
+  redis-server:
+    image: redis
+    restart: always
+  db:
+    image: mysql:5.7
+    restart: always
+    environment: 
+      MYSQL_ROOT_PASSWORD: Os@12345
+      MYSQL_DATABASE: ravenkart
+      MYSQL_PASSWORD: Os@12345
+    expose: 
+      - "3306"
+    ports:
+      - "3307:3306"
+  solr:
+    image: solr:7.0.1
+    expose:
+      - "8982"
+    ports:
+      - "8982:8982"
+    volumes:
+      - data:/opt/solr/server/solr/mycores
+    entrypoint:
+      - docker-entrypoint.sh
+      - solr-precreate
+      - mycore
+    links:
+      - db
+  app:
+    build: .
+    command:
+      - /bin/bash
+      - -c
+      - |
+          while ! nc db 3306 ;
+            do
+              echo sleeping;
+              sleep 1;
+            done;
+          echo App Connected After Mysql!;
+          rm -f tmp/pids/server.pid 
+          bundle exec rake resque:scheduler & 
+          bundle exec rake resque:work &
+          bundle exec rake sunspot:solr:start &&
+          bundle exec rake db:migrate:reset &&
+          bundle exec rake db:seed &&
+          bundle exec rake sunspot:reindex &&
+          bundle exec rails s -p 3000 -b '0.0.0.0' 
+    depends_on:
+      - db
+      - redis-server
+    ports: 
+      - "3000:3000"
+    volumes:
+      - .:/app
+    environment:
+      - RAILS_ENV=development
+      - DATABASE_HOST=db
+      - DATABASE_USER=root
+      - DATABASE_PASSWORD=Os@12345
+      - DATABASE_NAME=ravenkart
+      - DATABASE_PORT=3306
+    links:
+      - db
+      - redis-server
+      - solr:solr
+    tty: true
+volumes:
+  data: {}
