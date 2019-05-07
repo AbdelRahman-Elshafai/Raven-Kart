@@ -24,7 +24,11 @@ sudo systemctl restart redis.service
 To change the Java version
 
 ```bash
+sudo update-alternatives --config java
 ```
+Use `java -version` to check your current version.
+
+
 As for the database we are using **mysql**.
 ### Installing
 
