@@ -32,7 +32,7 @@
           <p><%= @product.description %></p>
         </div>
         <div class="box-tocart d-flex">
-          <% if  @availabile or !user_signed_in? or !current_user.seller? %>
+          <% if  (can? :add_to_cart, CartProduct and @availabile) or !user_signed_in? %>
           <span>Qty</span>
           <%= render 'cart_products/form', object: @cart_product %>
           <% end %>
