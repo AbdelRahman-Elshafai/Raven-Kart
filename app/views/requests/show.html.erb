@@ -10,8 +10,10 @@
         </tr>
     </thead>
     <tbody>
+        <% @stores.each do |store| %>
         <% @products.each do |request| %>
         <tr>
+            <% if store.id == request.product.store_id%>
             <td> <%= request.product.title %></td>
             <td> <%= request.product.store.name %></td>
             <td><%= request.quantity%></td>
@@ -26,7 +28,9 @@
             <%if request.status_id==3%>
             <td style="color:green;"><%= request.status.name%></td>
             <%end%>
+            <%end%>
         </tr>
+        <%end%>
         <%end%>
     </tbody>
 </table>

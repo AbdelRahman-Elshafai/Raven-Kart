@@ -6,6 +6,7 @@ class RequestsController < ApplicationController
   end
 
   def show
+    @stores = Store.where(user_id: current_user.id)
     @orders = Order.find(params[:id])
     @products = @orders.order_products
   end
@@ -27,7 +28,7 @@ class RequestsController < ApplicationController
       order.update(status_id: 2)
     end
 
-    redirect_to request_path(order) , notice: 'Product confirmed.'
+    redirect_to request_path(confirmed_product.order_id) , notice: 'Product confirmed.'
   end
 
   def deliver_status
@@ -47,6 +48,6 @@ class RequestsController < ApplicationController
       order.update(status_id: 3)
     end
 
-    redirect_to request_path(order), notice: 'Product delivered.'
+    redirect_to request_path(delivered_product.order_id), notice: 'Product delivered.'
   end
 end
