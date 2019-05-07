@@ -21,8 +21,3 @@ development:
     6-docker-compose run <container-tag-from-docker-compose.yml> sh -> to run terminal in side
 ---------------------------------------------------------------------
 
-
-
-
-remember local.env
-remember env.yml
