@@ -1,27 +1,23 @@
+<%@products.each do |product|%>
 <div class="product product__style--3">
   <div class="product__thumb">
-    <a class="first__img" href="single-product.html"><%= image_tag "best-sell-product/8.jpg" %></a>
+    <a class="first__img" > <%= link_to product, :class => "first__img" do %>
+      <%= image_tag product.images[0] %>
+      <% end %></a>
+       <%= link_to product, :class => "second__img animation" do %>
+      <%= image_tag product.images[1]  %>
+      <% end %>
   </div>
   <div class="product__content content--center">
     <div class="action">
       <div class="actions_inner">
-        <ul class="add_to_links">
-          <li><a class="cart" href="cart.html"><%= fa_icon('shopping-bag') %></a></li>
-          <li><a class="wishlist" href="wishlist.html"><%=fa_icon( 'shopping-cart') %></i></a></li>
-          <li><a class="compare" href="#"><%= fa_icon('heartbeat') %></a></li>
-          <li><a data-toggle="modal" title="Quick View" class="quickview modal-view detail-link"
-              href="#productmodal"><%= fa_icon( 'search') %></a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="product__hover--content">
-      <ul class="rating d-flex">
-        <li class="on"><%= fa_icon('star') %></li>
-        <li class="on"><%= fa_icon('star') %></li>
-        <li class="on"><%= fa_icon('star') %></li>
-        <li><%= fa_icon('star') %></li>
-        <li><%= fa_icon('star') %></li>
-      </ul>
+          <% if !user_signed_in? or !current_user.seller?  %>
+          <ul class="add_to_links">
+            <li> <%= render 'cart_products/cardform', product: product, object: @cart_product %></li>
+          </ul>
+          <% end %>
+        </div>
     </div>
   </div>
 </div>
+<%end%>
