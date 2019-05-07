@@ -39,42 +39,22 @@
         </div>
         <div class="product_meta">
           <span class="posted_in">Category:
-            <a href="#"><%= @product.product_category%></a>
+          <%= link_to @product.product_category,  products_filtered_by_category_path(category: @product.category_id)%>
           </span>
         </div>
         <div class="product_meta">
           <span class="posted_in">Brand:
-            <a href="#"><%= @product.product_brand%></a>
+          <%= link_to @product.product_brand,  products_filtered_by_brand_path(brand: @product.brand_id)%>
           </span>
         </div>
         <div class="product_meta">
           <span class="posted_in">Availability:
             <% if @availabile %>
-            <a href="#" style="color:green;">Availabile</a>
+            <span style="color:green;">Availabile</span>
             <% else %>
-            <a href="#" style="color:red;">Out of stock</a>
+            <span style="color:red;">Out of stock</span>
             <% end %>
           </span>
-        </div>
-        <div class="product-share">
-          <ul>
-            <li class="categories-title">Share :</li>
-            <li>
-              <a href="#">
-                <%= fa_icon('twitter') %>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <%= fa_icon('facebook') %>
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                <%= fa_icon('linkedin') %>
-              </a>
-            </li>
-          </ul>
         </div>
       </div>
     </div>
