@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
-  before_action :authenticate_user! , except: [:index, :show ]
+  before_action :authenticate_user! , except: [:index, :show, 
+    :filter_products_by_category, :filter_products_by_brand, 
+    :show_products_by_brand, :show_products_by_category]
   load_and_authorize_resource
   before_action :set_product, only: [:show, :edit, :update, :destroy]
   before_action :create_cart_product_for_user, only: [:index, :show]
