@@ -15,23 +15,32 @@
                                     <%if order.status_id==1%>
                                     <span style="color:gray;"><%=order.status.name%></span></a>
                                     <%end%>
-                                     <%if order.status_id==2%>
+                                    <%if order.status_id==2%>
                                     <span style="color:orange;"><%=order.status.name%></span></a>
                                     <%end%>
-                                     <%if order.status_id==3%>
+                                    <%if order.status_id==3%>
                                     <span style="color:green;"><%=order.status.name%></span></a>
-                                    <%end%> 
+                                    <%end%>
                             </h5>
                         </div>
                         <div id=<%="collapse#{order.id}"%> class="collapse" role="tabpanel" aria-labelledby="headingOne"
                             data-parent="#accordion">
                             <div class="card-body">
-                            <ul>
-                            <li><b>Total:</b> $<%= order.total_price%> </li>
-                            <% if order.total_price_after_sale != 0%>
-                            <li><b>Total after sale:</b> $<%= order.total_price_after_sale%> </li>
-                            <% end %>
-                            </ul>
+                                <ul>
+                                    <li><b>Total:</b> $<%= order.total_price%> </li>
+                                    <% if order.total_price_after_sale != 0%>
+                                    <li><b>Total after sale:</b> $<%= order.total_price_after_sale%> </li>
+                                    <% end %>
+                                    <li><b>Products:</b>
+                                        <% @order_products.each do |product| %>
+                                        <% if order.id == product.order_id%>
+                                        <%= product.product.title%> <b>Qty: </b> <%=product.quantity%> ,
+                                        <%end%>
+                                        <%end%>
+                                    <li>
+                                        <td><%= link_to 'Show receit', order_path(order) %></td>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>

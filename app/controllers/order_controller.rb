@@ -4,6 +4,7 @@ class OrderController < ApplicationController
 
     def index
         @orders = current_user.orders
+        @order_products = OrderProduct.where(order_id: @orders.ids)
     end
 
     def create
@@ -18,8 +19,6 @@ class OrderController < ApplicationController
                     @new_stock = @product.stock - p.quantity
                     Product.find_by_id(p.product_id).update(stock: @new_stock)
                 end
-                # @cart_products.each{ |p| p.destroy}
-                # redirect_to @order, notice: 'Order was successfully created.'
                 redirect_to empty_cart_path
             else 
                 redirect_to shopping_cart_path, alert: 'Order not created.'
