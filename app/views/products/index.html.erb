@@ -4,10 +4,43 @@
 <%= link_to 'New Product', new_product_path %>
 <% end %>
 
-<br>
+<div class="page-shop-sidebar left--sidebar bg--white section-padding--lg">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3">
+        <div class="shop__sidebar">
+          <aside class="wedget__categories poroduct--cat">
+            <h3 class="wedget__title">Product Categories</h3>
+            <ul>
+              <% @categories.each do |category|  %>
+              <li><%= link_to category.name, products_filtered_by_category_path(category: category.id) %></li>
+              <% end %>
+            </ul>
+          </aside>
+          <aside class="wedget__categories poroduct--tag">
+            <h3 class="wedget__title">Product Brands</h3>
+            <ul>
+              <% @brands.each do |brand|  %>
+              <li><%= link_to brand.name, products_filtered_by_brand_path(brand: brand.id) %></li>
+              <% end %>
+            </ul>
+          </aside>
+        </div>
+      </div>
 
-<div class="row">
-  <% @products.each do |product| %>
-  <%= render 'productcard', product: product %>
-  <% end %>
+      <div class="col-9">
+        <div class="row">
+          <div class="tab__container">
+            <div class="shop-grid tab-pane fade show active" id="nav-grid" role="tabpanel">
+              <div class="row">
+                <% @products.each do |product| %>
+                <%= render 'shared/product_card', product: product %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

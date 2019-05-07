@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     get '/users/sign_out' , :to => 'active_admin/devise/sessions#destroy'
   end
   resources :products
+  get 'products/:brand/brand', to: 'products#filter_products_by_brand', as: 'products_filtered_by_brand'
+  get 'products/:category/category', to: 'products#filter_products_by_category', as: 'products_filtered_by_category'
   get 'productsbrand', to: 'products#show_products_by_brand', as: 'products_by_brand'
   get 'productscategory', to: 'products#show_products_by_category', as: 'products_by_category'
   get 'shopping_cart', to: 'shopping_cart#show', as: 'shopping_cart'
