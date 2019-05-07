@@ -1,6 +1,5 @@
 class TemplateController < ApplicationController
   def index
-  end
-  def single
+    @product = Product.first()
   end
 end

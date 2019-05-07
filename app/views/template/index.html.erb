@@ -10,13 +10,13 @@
     </div>
     <!-- Start Single Tab Content -->
     <div class="furniture--4 border--round arrows_style owl-carousel owl-theme row mt--50">
-      <%= render "shared/product_card" %>
-      <%= render "shared/product_card" %>
-      <%= render "shared/product_card" %>
-      <%= render "shared/product_card" %>
-      <%= render "shared/product_card" %>
-      <%= render "shared/product_card" %>
-      <%= render "shared/product_card" %>
+      <%= render "shared/product_card", product: @product %>
+      <%= render "shared/product_card", product: @product %>
+      <%= render "shared/product_card", product: @product %>
+      <%= render "shared/product_card", product: @product %>
+      <%= render "shared/product_card", product: @product %>
+      <%= render "shared/product_card", product: @product %>
+      <%= render "shared/product_card", product: @product %>
     </div>
     <!-- End Single Tab Content -->
   </div>
@@ -35,8 +35,8 @@
         </div>
       </div>
     </div>
-    <div class="row mt--50">
-      <div class="col-md-12 col-lg-12 col-sm-12">
+    <%# <div class="row mt--50">
+      <div class="col-md-12 col-lg-12 col-sm-12=">
         <div class="product__nav nav justify-content-center" role="tablist">
           <a class="nav-item nav-link active" data-toggle="tab" href="#nav-all" role="tab">ALL</a>
           <a class="nav-item nav-link" data-toggle="tab" href="#nav-biographic" role="tab">BIOGRAPHIC</a>
@@ -45,25 +45,25 @@
           <a class="nav-item nav-link" data-toggle="tab" href="#nav-cook" role="tab">COOK</a>
         </div>
       </div>
-    </div>
-    <div class="tab__container mt--60">
+    </div> %>
+    <div class="tab__container">
       <!-- Start Single Tab Content -->
       <div class="row single__tab tab-pane fade show active" id="nav-all" role="tabpanel">
         <div class="product__indicator--4 arrows_style owl-carousel owl-theme">
-          <%= render "shared/product_card" %>
-          <%= render "shared/product_card" %>
-          <%= render "shared/product_card" %>
-          <%= render "shared/product_card" %>
-          <%= render "shared/product_card" %>
-          <%= render "shared/product_card" %>
-          <%= render "shared/product_card" %>
-          <%= render "shared/product_card" %>
-          <%= render "shared/product_card" %>
-          <%= render "shared/product_card" %>
-          <%= render "shared/product_card" %>
-          <%= render "shared/product_card" %>
-          <%= render "shared/product_card" %>
-          <%= render "shared/product_card" %>
+          <%= render "shared/product_card", product: @product %>
+          <%= render "shared/product_card", product: @product %>
+          <%= render "shared/product_card", product: @product %>
+          <%= render "shared/product_card", product: @product %>
+          <%= render "shared/product_card", product: @product %>
+          <%= render "shared/product_card", product: @product %>
+          <%= render "shared/product_card", product: @product %>
+          <%= render "shared/product_card", product: @product %>
+          <%= render "shared/product_card", product: @product %>
+          <%= render "shared/product_card", product: @product %>
+          <%= render "shared/product_card", product: @product %>
+          <%= render "shared/product_card", product: @product %>
+          <%= render "shared/product_card", product: @product %>
+          <%= render "shared/product_card", product: @product %>
         </div>
       </div>
       <!-- End Single Tab Content -->
