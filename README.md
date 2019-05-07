@@ -136,7 +136,7 @@ Coupon
 ```
 
 
-##Rake Run
+## Rake Run
 Rake Run command was made to ensure that starting the application was easy
 on whom ever that runs it and it's made up of five commands
 
