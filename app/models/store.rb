@@ -1,16 +1,12 @@
 class Store < ApplicationRecord
+  belongs_to :user
   has_many :products
   has_many :order_products, through: :products
-  belongs_to :user
+  has_many :orders, through: :products
 
   validates :name , presence: true, uniqueness: true
   validates :summary , presence: true
   validates :user_id , presence: true, uniqueness: true
-
-
-  def orders
-    Order.all
-  end
 
   def requests
     self.order_products.all
