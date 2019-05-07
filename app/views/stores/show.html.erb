@@ -1,15 +1,24 @@
 <% content_for :title, "Store Details" %>
 
-<div class="col-lg-6 col-12">
-    <div class="product__info__main">
-    <br>
-        <h1>Name: <%= @store.name %></h1>
-        <h1>Summary: <%= @store.summary %></h1> 
+<div class="blog-details content">
+    <article class="blog-post-details">
+        <div class="post_wrapper">
+            <div class="post_header">
+                <h2><%= @store.name %></h2>
+                <ul class="post_author">
+                    <li>Created at : <%= @store.created_at %> </li>
+                </ul>
+            </div>
+            <div class="post_content">
+                <p><%= @store.summary %></p>
+
+            </div>
+        </div>
+    </article>
+    <div class="row">
+        <% @products.each do |product| %>
+        <%= render 'shared/product_card', product: product%>
+        <% end %>
     </div>
 </div>
-<br>
-<div class="row">
- <% @products.each do |product| %>
-  <%= render 'shared/product_card', product: product%>
- <% end %>
- </div>
+</div>
