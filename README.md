@@ -113,4 +113,65 @@ Inside `config/dockercommands` you will find all the commands you need to run th
 [ERD](Simple-ecommerce.jpeg)
 [Schema](Schema.pdf)
 
+## Jobs and Workers
+
+we have three jobs that are run by two workers on 3 Queues
+#### Jobs
+```jobs
+Image Upload
+Mailer
+Coupon Expiration
+```
+#### Workers
+```workers
+Resque Worker
+Resque Scheduler 'CouponExpireDateJob'
+```
+
+#### Queues
+```queues
+Mailer
+Default
+Coupon
+```
+
+
+##Rake Run
+Rake Run command was made to ensure that starting the application was easy
+on whom ever that runs it and it's made up of five commands
+
+```run
+rails s
+rake sunspot:solr:start
+rake resque:scheduler 
+rake resque:work
+rake sunspot:reindex
+```
+#### rails s
+Starts the rails server
+
+#### rake sunspot:solr:start
+Starts the sunspot solr search engine
+
+>**_Note: A must for the application to run_**
+
+#### rake resque:scheduler 
+Starts the scheduler for the coupon expiration worker
+
+#### rake resque:work
+Start the default resque worker for the mail and image upload jobs
+
+#### rake sunspot:reindex
+Reindex the search columns for the search engine
+>**_Note: A must for the search to work_**
+
+## Rake Stop
+Rake Stop command was made to stop the rails server, workers , sunspot solr
+by killing the process by it's id that was stored during rake run
+
+#### rake sunspot:reindex
+Stops the sunspot solr server
+
+
+
 
