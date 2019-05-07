@@ -3,6 +3,7 @@ class TemplateController < ApplicationController
 
   def index
     @product = Product.first()
+    @products = Product.order("RAND()").limit(10)    
   end
 
   private
