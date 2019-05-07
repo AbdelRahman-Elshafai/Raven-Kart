@@ -5,10 +5,6 @@
         <div class="switcher-options">
           <div class="switcher-currency-trigger">
             <div class="setting__menu">
-              <%if current_user %>
-              <span><a href="#">My Account</a></span>
-              <span><a href="#">My Wishlist</a></span>
-                <%end %>
               <%if !current_user %>
               <span><%= link_to('Sign In', new_user_session_path)  %></span>
               <span><%= link_to('Register', new_user_registration_path)%></span>
