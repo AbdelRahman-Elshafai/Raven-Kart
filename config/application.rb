@@ -14,7 +14,7 @@ module RavenKart
     config.active_job.queue_adapter = :resque
 
     config.exception_handler = {
-      dev: nil ,
+      dev: true ,
 
       exceptions: {
           all: { layout: '404' } # -> this will inherit from ApplicationController's layout
