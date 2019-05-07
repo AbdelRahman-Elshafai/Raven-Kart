@@ -2,7 +2,7 @@ class Store < ApplicationRecord
   belongs_to :user
   has_many :products
   has_many :order_products, through: :products
-  has_many :orders, through: :products
+  has_many :orders, -> { distinct }, through: :products
 
   validates :name , presence: true, uniqueness: true
   validates :summary , presence: true
