@@ -9,13 +9,11 @@
   </thead>
 
   <tbody>
-    <% @stores.each do |store| %>
-      <tr>
-        <td><%= store.name %></td>
-        <td><%= store.products.count %></td>
-        <td><%= link_to 'Show', store_path(store) %></td>
-      </tr>
-    <% end %>
+    <tr>
+      <td><%= @store.name %></td>
+      <td><%= @store.products.count %></td>
+      <td><%= link_to 'Show', store_path(@store) %></td>
+    </tr>
   </tbody>
 </table>
 
@@ -35,31 +33,29 @@
   </thead>
 
   <tbody>
-    <% @stores.each do |store| %>
-    <% store.orders.each do |order| %>
-      <tr>
-        <td><%= order.id %></td>
-        <td><%= order.user.name %></td>
-        <%if order.coupon_id == nil%>
-        <td>$<%=order.total_price %></td>  
-        <%end%>
-         <%if order.coupon_id != nil%>
-        <td>$<%=order.total_price_after_sale %></td>  
-        <%end%>
-        <td><%= order.order_products.count %></td>
-        <%if order.status_id==1%>
-        <td style="color:gray;"><%= order.status.name%></td>
-    <%end%>
-     <%if order.status_id==2%>
-        <td style="color:orange;"><%= order.status.name%></td>
-    <%end%>
-    <%if order.status_id==3%>
-        <td style="color:green;"><%= order.status.name%></td>
-    <%end%>
-        <td><%= link_to 'Show', request_path(order) %></td>
-      </tr>
+    <% @store.orders.each do |order| %>
+    <tr>
+      <td><%= order.id %></td>
+      <td><%= order.user.name %></td>
+      <%if order.coupon_id == nil%>
+      <td>$<%=order.total_price %></td>
+      <%end%>
+      <%if order.coupon_id != nil%>
+      <td>$<%=order.total_price_after_sale %></td>
+      <%end%>
+      <td><%= order.order_products.count %></td>
+      <%if order.status_id==1%>
+      <td style="color:gray;"><%= order.status.name%></td>
+      <%end%>
+      <%if order.status_id==2%>
+      <td style="color:orange;"><%= order.status.name%></td>
+      <%end%>
+      <%if order.status_id==3%>
+      <td style="color:green;"><%= order.status.name%></td>
+      <%end%>
+      <td><%= link_to 'Show', request_path(order) %></td>
+    </tr>
     <% end %>
-    <%end%>
   </tbody>
 </table>
 <br>
