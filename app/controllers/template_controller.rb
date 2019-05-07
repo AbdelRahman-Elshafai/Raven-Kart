@@ -2,7 +2,6 @@ class TemplateController < ApplicationController
   before_action :create_cart_product_for_user
 
   def index
-    @product = Product.first()
     @products = Product.order("RAND()").limit(10)    
   end
 
