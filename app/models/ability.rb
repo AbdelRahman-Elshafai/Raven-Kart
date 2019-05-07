@@ -9,7 +9,8 @@ class Ability
     alias_action :create, :update, :destroy , to: :cud
     user ||= User.new # guest user (not logged in)
     if user.role_id == 1
-      can :manage, [Category, Brand, User , Coupon, Store]
+      can :manage, [Category, Brand, User , Coupon]
+      can :create, Sore
       can :read, ActiveAdmin::Page
     elsif user.role_id == 3
       store = Store.find_by user_id: user.id
